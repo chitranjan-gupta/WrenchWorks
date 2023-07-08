@@ -20,7 +20,9 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <Script
+        <title>WrenchWorks</title>
+      </Head>
+      <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -32,13 +34,14 @@ const App = ({ Component, pageProps }) => {
               });
             `,
           }}
+          id='gtag'
         />
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988461399741851"
-     crossOrigin="anonymous"/>
-      </Head>
+     crossOrigin="anonymous" id='gadsense'/>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        id='gtagafter'
       />
       <Component {...pageProps} />
     </>

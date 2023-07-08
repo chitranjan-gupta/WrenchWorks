@@ -1,7 +1,9 @@
+import Image from "next/image"
 import Link from "next/link"
+import car from "../../img/car.png"
 export default function Main() {
   const navigation = [
-    { name: 'Home', href:'/'},
+    { name: 'Home', href: '/' },
     { name: 'Product', href: '#' },
     { name: 'Features', href: '#' },
     { name: 'Marketplace', href: '#' },
@@ -77,14 +79,17 @@ export default function Main() {
                 }}
               />
             </div>
-            <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-              
+
+            <div className="w-full flex flex-row -ml-8 mainheader">
+              <div>
+                <Image alt="" src={car} width={500} height={700}/>
+              </div>
               <div className="text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                   WrenchWorks
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                  
+
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
@@ -93,7 +98,7 @@ export default function Main() {
                   >
                     Get started
                   </a>
-                  
+
                 </div>
               </div>
             </div>
@@ -145,7 +150,7 @@ export default function Main() {
                     <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
                   </div>
                   <div className="relative mt-8 flex items-center gap-x-4">
-                    <img src={post.author.imageUrl} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
+                    <Image src={post.author.imageUrl} alt="" width={40} height={40} className="h-10 w-10 rounded-full bg-gray-50" />
                     <div className="text-sm leading-6">
                       <p className="font-semibold text-gray-900">
                         <a href={post.author.href}>
@@ -192,7 +197,7 @@ export default function Main() {
               {people.map((person) => (
                 <li key={person.name}>
                   <div className="flex items-center gap-x-6">
-                    <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
+                    <Image className="h-16 w-16 rounded-full" width={64} height={64} src={person.imageUrl} alt="" />
                     <div>
                       <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
                       <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
@@ -270,7 +275,7 @@ export default function Main() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
         <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
-          <img className="mx-auto h-12" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
+          <Image className="mx-auto h-12" width={48} height={48} src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
           <figure className="mt-10">
             <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
               <p>
@@ -279,8 +284,10 @@ export default function Main() {
               </p>
             </blockquote>
             <figcaption className="mt-10">
-              <img
+              <Image
                 className="mx-auto h-10 w-10 rounded-full"
+                width={40}
+                height={40}
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt=""
               />
