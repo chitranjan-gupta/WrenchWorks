@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <script
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -33,10 +33,9 @@ const App = ({ Component, pageProps }) => {
             `,
           }}
         />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988461399741851"
-     crossOrigin="anonymous"></script>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988461399741851"
+     crossOrigin="anonymous"/>
       </Head>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
