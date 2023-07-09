@@ -373,16 +373,13 @@ export default function Main() {
             </a>
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
               <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
+                <Link href="/about" className="mr-4 hover:underline md:mr-6 ">About</Link>
               </li>
               <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                <Link href="/privacy_policy" className="mr-4 hover:underline md:mr-6">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6 ">Licensing</a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">Contact</a>
+                <Link href="/contact_us" className="hover:underline">Contact</Link>
               </li>
             </ul>
           </div>
