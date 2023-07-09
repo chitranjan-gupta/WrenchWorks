@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth;
+}
+
 .mainheader{
-    background-image: url("../../img/cartop.png");
+    /* background-image: url("../../img/cartop.png");
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
 }

@@ -19,11 +19,11 @@ export default function Main() {
       datetime: '2020-03-16',
       category: { title: 'Marketing', href: '#' },
       author: {
-        name: 'Michael Foster',
+        name: 'Chitranjan Gupta',
         role: 'Co-Founder / CTO',
         href: '#',
         imageUrl:
-          'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          'https://avatars.githubusercontent.com/u/37315561?v=4',
       },
     },
   ]
@@ -34,15 +34,45 @@ export default function Main() {
   ]
   const people = [
     {
-      name: 'Leslie Alexander',
-      role: 'Co-Founder / CEO',
+      name: 'Bablu Yadav',
+      role: 'Founder / CEO',
+      url:"https://www.instagram.com/bablu__yadav_/",
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        'https://scontent-ccu1-1.cdninstagram.com/v/t51.2885-19/331591888_581194920568261_6171496547798537430_n.jpg?stp=dst-jpg_s320x320&_nc_ht=scontent-ccu1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=iTwptB6d8MUAX-aMMG2&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfDCLf15Ka8t8cFmFRx_ZhHU3-FSjylKHyDB4qmePjfXxA&oe=64B006B5&_nc_sid=8b3546',
+    },
+    {
+      name: 'Chitranjan Gupta',
+      role: 'Co-Founder / CTO',
+      url:"https://github.com/chitranjan01",
+      imageUrl:
+        'https://avatars.githubusercontent.com/u/37315561?v=4',
+    },
+  ]
+  const features = [
+    {
+      name: 'Push to deploy',
+      description:
+        'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+    },
+    {
+      name: 'SSL certificates',
+      description:
+        'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+    },
+    {
+      name: 'Simple queues',
+      description:
+        'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+    },
+    {
+      name: 'Advanced security',
+      description:
+        'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
     },
   ]
   return (
     <>
-      <section name="hero">
+      <section name="hero" id="hero">
         <div className="bg-white">
           <header className="absolute inset-x-0 top-0 z-50">
             <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -80,20 +110,20 @@ export default function Main() {
               />
             </div>
 
-            <div className="w-full flex flex-row -ml-8 mainheader">
+            <div className="w-full flex flex-row -ml-8 mainheader justify-between">
               <div>
-                <Image alt="" src={car} width={500} height={700}/>
+                <Image alt="" src={car} width={500} height={700} />
               </div>
               <div className="text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  WrenchWorks
+                  A Car for Everyone
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
 
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
-                    href="#"
+                    href="#blog"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Get started
@@ -117,7 +147,37 @@ export default function Main() {
           </div>
         </div>
       </section>
-      <section>
+      <section name="feature">
+      <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            What we offer
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          </p>
+        </div>
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+            {features.map((feature) => (
+              <div key={feature.name} className="relative pl-16">
+                <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                    
+                  </div>
+                  {feature.name}
+                </dt>
+                <dd className="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+      </section>
+      <section name="blog" id="blog">
         <div className="bg-white py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0">
@@ -150,7 +210,7 @@ export default function Main() {
                     <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.description}</p>
                   </div>
                   <div className="relative mt-8 flex items-center gap-x-4">
-                    <Image src={post.author.imageUrl} alt="" width={40} height={40} className="h-10 w-10 rounded-full bg-gray-50" />
+                    <Image src={post.author.imageUrl} alt="" width={460} height={460} className="h-10 w-10 rounded-full bg-gray-50" />
                     <div className="text-sm leading-6">
                       <p className="font-semibold text-gray-900">
                         <a href={post.author.href}>
@@ -188,25 +248,58 @@ export default function Main() {
           <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meet our leadership</h2>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              {/* <p className="mt-6 text-lg leading-8 text-gray-600">
                 Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
                 suspendisse.
-              </p>
+              </p> */}
             </div>
             <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
               {people.map((person) => (
                 <li key={person.name}>
                   <div className="flex items-center gap-x-6">
-                    <Image className="h-16 w-16 rounded-full" width={64} height={64} src={person.imageUrl} alt="" />
+                    <Image className="h-16 w-16 rounded-full" width={460} height={460} src={person.imageUrl} alt="" />
+                    <a href={person.url}>
                     <div>
                       <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
                       <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
                     </div>
+                    </a>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+      <section name="testmonials" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
+        <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
+        <div className="mx-auto max-w-2xl lg:max-w-4xl">
+          <Image className="mx-auto h-12" width={48} height={48} src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
+          <figure className="mt-10">
+            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+              <p>
+                “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
+                molestiae. Numquam corrupti in laborum sed rerum et corporis.”
+              </p>
+            </blockquote>
+            <figcaption className="mt-10">
+              <Image
+                className="mx-auto h-10 w-10 rounded-full"
+                width={40}
+                height={40}
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+              />
+              <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+                <div className="font-semibold text-gray-900">Judith Black</div>
+                <svg viewBox="0 0 2 2" width={3} height={3} aria-hidden="true" className="fill-gray-900">
+                  <circle cx={1} cy={1} r={1} />
+                </svg>
+                <div className="text-gray-600">CEO of Workcation</div>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </section>
       <section name="newsletter">
@@ -271,37 +364,32 @@ export default function Main() {
           </div>
         </div>
       </section>
-      <section name="testmonials" className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
-        <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-        <div className="mx-auto max-w-2xl lg:max-w-4xl">
-          <Image className="mx-auto h-12" width={48} height={48} src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt="" />
-          <figure className="mt-10">
-            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
-              <p>
-                “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-                molestiae. Numquam corrupti in laborum sed rerum et corporis.”
-              </p>
-            </blockquote>
-            <figcaption className="mt-10">
-              <Image
-                className="mx-auto h-10 w-10 rounded-full"
-                width={40}
-                height={40}
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-              <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                <div className="font-semibold text-gray-900">Judith Black</div>
-                <svg viewBox="0 0 2 2" width={3} height={3} aria-hidden="true" className="fill-gray-900">
-                  <circle cx={1} cy={1} r={1} />
-                </svg>
-                <div className="text-gray-600">CEO of Workcation</div>
-              </div>
-            </figcaption>
-          </figure>
+
+      <footer className="bg-white rounded-lg shadow m-4">
+        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <a href="https://wrenchworks.tech/" className="flex items-center mb-4 sm:mb-0">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap ">WrenchWorks</span>
+            </a>
+            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
+              <li>
+                <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
+              </li>
+              <li>
+                <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" className="mr-4 hover:underline md:mr-6 ">Licensing</a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+          <span className="block text-sm sm:text-center">© 2023 <a href="https://wrenchworks.tech/" className="hover:underline">WrenchWorks™</a></span>
         </div>
-      </section>
+      </footer>
     </>
   )
 }

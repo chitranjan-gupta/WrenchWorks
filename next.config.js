@@ -10,6 +10,14 @@ const nextConfig = {
       protocol:"https",
       hostname:"tailwindui.com",
       port:""
+    },{
+      protocol:"https",
+      hostname:"avatars.githubusercontent.com",
+      port:""
+    },{
+      protocol:"https",
+      hostname:"scontent-ccu1-1.cdninstagram.com",
+      port:""
     }]
   }
 }
