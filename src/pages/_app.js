@@ -6,23 +6,23 @@ import { useEffect } from 'react'
 import * as gtag from '../../lib/gtag'
 
 const App = ({ Component, pageProps }) => {
-  // const router = useRouter()
-  // useEffect(() => {
-  //   const handleRouteChange = (url) => {
-  //     gtag.pageview(url)
-  //   }
-  //   router.events.on('routeChangeComplete', handleRouteChange)
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange)
-  //   }
-  // }, [router.events])
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
       <Head>
         <title>WrenchWorks</title>
       </Head>
-      {/* <Script
+      <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -42,7 +42,7 @@ const App = ({ Component, pageProps }) => {
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
         id='gtagafter'
-      /> */}
+      />
       <Component {...pageProps} />
     </>
   )
