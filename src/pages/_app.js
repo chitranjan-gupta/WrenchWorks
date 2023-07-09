@@ -36,7 +36,7 @@ const App = ({ Component, pageProps }) => {
           }}
           id='gtag'
         />
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2988461399741851"
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4551487873622800"
      crossOrigin="anonymous" id='gadsense'/>
       <Script
         strategy="afterInteractive"
