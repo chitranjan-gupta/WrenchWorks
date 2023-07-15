@@ -11,3 +11,8 @@ html{
     background-position: center;
     background-size: cover; */
 }
+
+.pspan{
+    border-left: 2px solid rgb(79 70 229 / 1);
+    padding-left: 5px;
+}

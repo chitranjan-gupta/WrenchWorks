@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import Script from 'next/script'
-import { useEffect } from 'react'
-import * as gtag from '../../lib/gtag'
+import "@/styles/globals.css";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Script from "next/script";
+import { useEffect } from "react";
+import * as gtag from "../../lib/gtag";
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -21,8 +21,31 @@ const App = ({ Component, pageProps }) => {
     <>
       <Head>
         <title>WrenchWorks</title>
+        <meta
+          name="description"
+          content="WrenchWorks.tech provides information about car, car parts, car servicing."
+        />
+        <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+        <link rel="manifest" href="site.webmanifest"/>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="favicon-16x16.png"
+        />
       </Head>
-       <Script
+      <Script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -45,7 +68,7 @@ const App = ({ Component, pageProps }) => {
       />
       <Component {...pageProps} />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
