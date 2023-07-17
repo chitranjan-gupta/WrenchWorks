@@ -1,6 +1,6 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify:true,
   images: {
     remotePatterns: [
       {
@@ -20,11 +20,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "scontent-ccu1-1.cdninstagram.com",
-        port: "",
-      },
-      {
-        protocol: "https",
         hostname: "cdn.tailgrids.com",
         port: "",
       },
@@ -35,6 +30,19 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/post/:slug*',
+        destination: '/blog/:slug*',
+        permanent: true,
+      },
+    ]
+  },
 };
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true"
+})
+
+module.exports = withBundleAnalyzer(nextConfig);

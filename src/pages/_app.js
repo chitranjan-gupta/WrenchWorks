@@ -6,27 +6,37 @@ import { useEffect } from "react";
 import * as gtag from "../../lib/gtag";
 
 const App = ({ Component, pageProps }) => {
-  const router = useRouter()
-   useEffect(() => {
-     const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-     router.events.on('routeChangeComplete', handleRouteChange)
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-   }, [router.events])
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <>
       <Head>
         <title>WrenchWorks</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="title" content="WrenchWorks" />
+        <meta
+          name="keywords"
+          content="Car, Car Blogs, Engine, Wrench, Works, Wrench Works, "
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
         <meta
           name="description"
           content="WrenchWorks.tech provides information about car, car parts, car servicing."
         />
-        <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-        <link rel="manifest" href="site.webmanifest"/>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="manifest" href="site.webmanifest" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -46,8 +56,8 @@ const App = ({ Component, pageProps }) => {
         />
       </Head>
       <Script
-          dangerouslySetInnerHTML={{
-            __html: `
+        dangerouslySetInnerHTML={{
+          __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
@@ -56,18 +66,35 @@ const App = ({ Component, pageProps }) => {
                 page_path: window.location.pathname,
               });
             `,
-          }}
-          id='gtag'
-        />
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4551487873622800"
-     crossOrigin="anonymous" strategy="afterInteractive" id="gadsense" />
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        id='gtagafter'
+        }}
+        id="gtag"
+      />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4551487873622800"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+        id="gadsense"
+      />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        id="gtagafter"
         strategy="afterInteractive"
       />
-      <Script id="adblock" async src="https://fundingchoicesmessages.google.com/i/pub-4551487873622800?ers=1" nonce="6EZBLFR76yHrYl1GaqJ2CA" strategy="afterInteractive" />
-      <Script id="adblockmsg" strategy="afterInteractive" nonce="6EZBLFR76yHrYl1GaqJ2CA">{`(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`}</Script>
-      <Script id="adb" strategy="afterInteractive">{`(function(){/*
+      <Script
+        id="adblock"
+        async
+        src="https://fundingchoicesmessages.google.com/i/pub-4551487873622800?ers=1"
+        nonce="6EZBLFR76yHrYl1GaqJ2CA"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="adblockmsg"
+        strategy="afterInteractive"
+        nonce="6EZBLFR76yHrYl1GaqJ2CA"
+      >{`(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`}</Script>
+      <Script id="adb" strategy="afterInteractive">
+        {`(function(){/*
 
  Copyright The Closure Library Authors.
  SPDX-License-Identifier: Apache-2.0
@@ -84,7 +111,8 @@ e,f);Y(a,e,h);Y(a,c,d);Y(a,c,e);Y(a,b,c);a.g=b;a.h.body.appendChild(a.g);b=W(1,5
 255)).toString()+")"},X=function(a){a=Q(a.j.g,"DIV");a.className=A();return a},U=function(a,b){0>=b||null!=a.g&&0!=a.g.offsetHeight&&0!=a.g.offsetWidth||(na(a),T(a),r.setTimeout(function(){return U(a,b-1)},50))},na=function(a){var b=a.i;var c="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];b=c?c.call(b):{next:aa(b)};for(c=b.next();!c.done;c=b.next())(c=c.value)&&c.parentNode&&c.parentNode.removeChild(c);a.i=[];(b=a.g)&&b.parentNode&&b.parentNode.removeChild(b);a.g=null};var pa=function(a,b,c,d,e){var f=oa(c),h=function(l){l.appendChild(f);r.setTimeout(function(){f?(0!==f.offsetHeight&&0!==f.offsetWidth?b():a(),f.parentNode&&f.parentNode.removeChild(f)):a()},d)},g=function(l){document.body?h(document.body):0<l?r.setTimeout(function(){g(l-1)},e):b()};g(3)},oa=function(a){var b=document.createElement("div");b.className=a;b.style.width="1px";b.style.height="1px";b.style.position="absolute";b.style.left="-10000px";b.style.top="-10000px";b.style.zIndex="-10000";return b};var L=function(a){J.call(this,a)};q(L,J);var qa=function(a){J.call(this,a)};q(qa,J);var ra=function(a,b){this.l=a;this.m=new R(a.document);this.g=b;this.i=K(this.g,1);b=M(this.g,2);this.o=x(K(b,4)||"");this.h=!1;b=M(this.g,13);b=x(K(b,4)||"");this.j=new la(a.document,b,K(this.g,12))};ra.prototype.start=function(){sa(this)};
 var sa=function(a){ta(a);S(a.m,a.o,3,!1,function(){a:{var b=a.i;var c=r.btoa(b);if(c=r[c]){try{var d=O(P,r.atob(c))}catch(e){b=!1;break a}b=b===K(d,1)}else b=!1}b?Z(a,K(a.g,14)):(Z(a,K(a.g,8)),V(a.j))},function(){pa(function(){Z(a,K(a.g,7));V(a.j)},function(){return Z(a,K(a.g,6))},K(a.g,9),K(a.g,10),K(a.g,11))})},Z=function(a,b){a.h||(a.h=!0,a=new a.l.XMLHttpRequest,a.open("GET",b,!0),a.send())},ta=function(a){var b=r.btoa(a.i);a.l[b]&&Z(a,K(a.g,5))};(function(a,b){r[a]=function(c){for(var d=[],e=0;e<arguments.length;++e)d[e-0]=arguments[e];r[a]=da;b.apply(null,d)}})("__h82AlnkH6D91__",function(a){"function"===typeof window.atob&&(new ra(window,O(qa,window.atob(a)))).start()});}).call(this);
 
-window.__h82AlnkH6D91__("WyJwdWItNDU1MTQ4Nzg3MzYyMjgwMCIsW251bGwsbnVsbCxudWxsLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9iL3B1Yi00NTUxNDg3ODczNjIyODAwIl0sbnVsbCxudWxsLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9lbC9BR1NLV3hVeDAxU295SjFBaVpkRmdaWGJ5ZGlwTk5xOG5WMUhDSU1Oc1NGdWlyd0gwWG9MMkQwZjQxdThWWG9ZRU1PUFZVdjM3TUdqQXVJM1FHMy1YZ3NYajh2Uk9RXHUwMDNkXHUwMDNkP3RlXHUwMDNkVE9LRU5fRVhQT1NFRCIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFgxMU9TamxmdEstQVN3dVNFMnRwT1BWNkkyRjFVMUpvVWdrdm51SzR3WjJISmxCalA1RU8zOV9oWk5zREpObzU2UTVOQlRxcnJ4d1ltNk9lTnA1cnEwNXdcdTAwM2RcdTAwM2Q/YWJcdTAwM2QxXHUwMDI2c2JmXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFdPWHhWY1dJSjdsTnp2SVkyTGJMaUpJMFhNZUpzMkFac1RVUldwMXNGUmFLbUtrSnRLeVdwazM3aFlpQkVmRjNJVjJxTkdpd2lMRHBTVzVvZWJYeXJWa0FcdTAwM2RcdTAwM2Q/YWJcdTAwM2QyXHUwMDI2c2JmXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFhzRDJyNEJnNEh2SFc4eWcxdENMYmVjZ2EzU2txQ2psV0tlelNNbVVmS2s3XzcxZDBQZjVzMXVSMXZUMTRJcVQyRFZldFZvZUdudzRQWFc4dC00UHRCT2dcdTAwM2RcdTAwM2Q/c2JmXHUwMDNkMiIsImRpdi1ncHQtYWQiLDIwLDEwMCwiY0hWaUxUUTFOVEUwT0RjNE56TTJNakk0TURBXHUwMDNkIixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vd3d3LmdzdGF0aWMuY29tLzBlbW4vZi9wL3B1Yi00NTUxNDg3ODczNjIyODAwLmpzP3VzcXBcdTAwM2RDQTAiXSwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vZWwvQUdTS1d4VWZSTFkyTlNoM083ZTRWRVQ1N1YzV2VjOFFZazZmRHF1X0VTQ0h2anNJQ1RQTlJHMjZNUjg3eFhPelBTZExrSk9yQW1VRmV1UTRPbWJMR29yTERiVUQ2d1x1MDAzZFx1MDAzZCJd");`} </Script>
+window.__h82AlnkH6D91__("WyJwdWItNDU1MTQ4Nzg3MzYyMjgwMCIsW251bGwsbnVsbCxudWxsLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9iL3B1Yi00NTUxNDg3ODczNjIyODAwIl0sbnVsbCxudWxsLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9lbC9BR1NLV3hVeDAxU295SjFBaVpkRmdaWGJ5ZGlwTk5xOG5WMUhDSU1Oc1NGdWlyd0gwWG9MMkQwZjQxdThWWG9ZRU1PUFZVdjM3TUdqQXVJM1FHMy1YZ3NYajh2Uk9RXHUwMDNkXHUwMDNkP3RlXHUwMDNkVE9LRU5fRVhQT1NFRCIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFgxMU9TamxmdEstQVN3dVNFMnRwT1BWNkkyRjFVMUpvVWdrdm51SzR3WjJISmxCalA1RU8zOV9oWk5zREpObzU2UTVOQlRxcnJ4d1ltNk9lTnA1cnEwNXdcdTAwM2RcdTAwM2Q/YWJcdTAwM2QxXHUwMDI2c2JmXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFdPWHhWY1dJSjdsTnp2SVkyTGJMaUpJMFhNZUpzMkFac1RVUldwMXNGUmFLbUtrSnRLeVdwazM3aFlpQkVmRjNJVjJxTkdpd2lMRHBTVzVvZWJYeXJWa0FcdTAwM2RcdTAwM2Q/YWJcdTAwM2QyXHUwMDI2c2JmXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2VsL0FHU0tXeFhzRDJyNEJnNEh2SFc4eWcxdENMYmVjZ2EzU2txQ2psV0tlelNNbVVmS2s3XzcxZDBQZjVzMXVSMXZUMTRJcVQyRFZldFZvZUdudzRQWFc4dC00UHRCT2dcdTAwM2RcdTAwM2Q/c2JmXHUwMDNkMiIsImRpdi1ncHQtYWQiLDIwLDEwMCwiY0hWaUxUUTFOVEUwT0RjNE56TTJNakk0TURBXHUwMDNkIixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vd3d3LmdzdGF0aWMuY29tLzBlbW4vZi9wL3B1Yi00NTUxNDg3ODczNjIyODAwLmpzP3VzcXBcdTAwM2RDQTAiXSwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vZWwvQUdTS1d4VWZSTFkyTlNoM083ZTRWRVQ1N1YzV2VjOFFZazZmRHF1X0VTQ0h2anNJQ1RQTlJHMjZNUjg3eFhPelBTZExrSk9yQW1VRmV1UTRPbWJMR29yTERiVUQ2d1x1MDAzZFx1MDAzZCJd");`}{" "}
+      </Script>
       <Component {...pageProps} />
     </>
   );
