@@ -29,7 +29,7 @@ const App = ({ Component, pageProps }) => {
           content="Car, Car Blogs, Engine, Wrench, Works, Wrench Works, "
         />
         <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta
           name="description"

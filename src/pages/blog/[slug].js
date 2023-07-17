@@ -116,15 +116,14 @@ const Post = ({ post }) => {
             )}
           </div>
         </div>
-        <div className="">
+        <div className="relative w-full h-96 object-contain">
           <Image
-            src={urlFor(post.mainImage).width(600).height(600).url()}
+            src={urlFor(post.mainImage).url()}
             alt="mainImage"
-            width={400}
-            height={400}
+            fill={true}
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center w-full">
           <PortableText value={body} components={ptComponents} />
         </div>
       </article>

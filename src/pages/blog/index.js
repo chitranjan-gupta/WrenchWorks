@@ -135,7 +135,7 @@ export default function Index({ posts }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const posts = await client.fetch(groq`
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
       _id,
