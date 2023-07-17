@@ -103,9 +103,7 @@ const Post = ({ post }) => {
             </div>
           )}
           <div className="text-sm leading-6">
-            <p className="font-semibold text-gray-900">
-                {name}
-            </p>
+            <p className="font-semibold text-gray-900">{name}</p>
             {categories && (
               <p className="text-gray-600">
                 Posted in
@@ -117,11 +115,13 @@ const Post = ({ post }) => {
           </div>
         </div>
         <div className="relative w-full h-96 object-contain">
-          <Image
-            src={urlFor(post.mainImage).url()}
-            alt="mainImage"
-            fill={true}
-          />
+          {post.mainImage && (
+            <Image
+              src={urlFor(post.mainImage).url()}
+              alt="mainImage"
+              fill={true}
+            />
+          )}
         </div>
         <div className="flex flex-col justify-center w-full">
           <PortableText value={body} components={ptComponents} />

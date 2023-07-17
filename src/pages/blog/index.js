@@ -92,10 +92,10 @@ export default function Index({ posts }) {
                 key={_id}
                 className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 dark:bg-gray-500"
                 style={{
-                  backgroundImage: `url("${urlFor(mainImage)
+                  backgroundImage: `url("${mainImage?urlFor(mainImage)
                     .width(600)
                     .height(600)
-                    .url()}")`,
+                    .url():"favicon-32x32.png"}")`,
                 }}
               >
                 <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b dark:via-transparent dark:from-gray-900 dark:to-gray-900"></div>
