@@ -35,6 +35,7 @@ const App = ({ Component, pageProps }) => {
           name="description"
           content="WrenchWorks.tech provides information about car, car parts, car servicing."
         />
+        <meta name="google-site-verification" content="y4lJ0hv1WzFVphDKAsLjymb3-_DPU-yvnV1tD2Wcvxw" />
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <link rel="manifest" href="site.webmanifest" />
         <link
