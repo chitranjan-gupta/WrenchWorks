@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://www.wrenchworks.tech/</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/sign_in</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog/chassis</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog/carburetor</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog/ic-engine</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog/fuel-injection-systems</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/blog/spark-plug</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/about</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/privacy_policy</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/contact_us</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.wrenchworks.tech/sign_up</loc>
+  <lastmod>2023-07-18T10:05:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
