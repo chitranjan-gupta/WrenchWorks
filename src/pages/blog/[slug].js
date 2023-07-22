@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import groq from "groq";
-import poster from "../../../img/poster-small.png";
 import { PortableText } from "@portabletext/react";
 import { client, urlFor } from "../../../lib/sanity";
+import poster from "../../../public/poster-small.png";
 
 const ptComponents = {
   types: {
@@ -40,11 +41,28 @@ const Post = ({ post }) => {
     authorImage,
     body = [],
   } = post;
+  const router = useRouter();
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
+        <meta
+          name="og:image"
+          content={post.mainImage ? urlFor(post.mainImage).url() : poster}
+        />
+        <meta
+          name="og:url"
+          content={`https://www.wrenchworks.tech/blog/${router.query.slug}`}
+        />
+        <meta name="og:site_name" content="Wrench Works" />
+        <meta name="og:locale" content="en_US" />
+        <meta name="og:type" content="article" />
       </Head>
       <header className="flex flex-row justify-between items-center p-1 lg:p-3 mb-2">
         <div className=" h-16 w-30">
@@ -115,13 +133,11 @@ const Post = ({ post }) => {
           </div>
         </div>
         <div className="relative w-full h-96 object-contain">
-          {post.mainImage && (
-            <Image
-              src={urlFor(post.mainImage).url()}
-              alt="mainImage"
-              fill={true}
-            />
-          )}
+          <Image
+            src={post.mainImage?urlFor(post.mainImage).url():poster}
+            alt="mainImage"
+            fill={true}
+          />
         </div>
         <div className="flex flex-col justify-center w-full">
           <PortableText value={body} components={ptComponents} />

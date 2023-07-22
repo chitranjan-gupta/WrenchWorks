@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import poster from "../../img/poster-small.png"
+import poster from "../../public/poster-small.png"
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }

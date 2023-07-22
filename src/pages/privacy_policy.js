@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import poster from "../../img/poster-small.png";
+import poster from "../../public/poster-small.png";
 export default function Privacy() {
   return (
     <div className=" p-5">

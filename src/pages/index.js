@@ -1,13 +1,46 @@
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import groq from "groq";
 import { client, urlFor } from "../../lib/sanity";
+import Meta from "../../component/meta";
 import piping from "../../img/piping.png";
-import poster from "../../img/poster-small.png";
+import poster from "../../public/poster-small.png";
 import car from "../../img/car.png";
 import logo from "../../img/logo.png";
+import instagram from "../../img/wrenchworks-instagram.png";
 
 export default function Main({ posts }) {
+  const blogRef = useRef();
+  const [scrollPos, setScrollPos] = useState(0);
+  function leftScroll() {
+    let rect = blogRef.current.getBoundingClientRect();
+    blogRef.current.scroll({
+      top: rect.y + 20,
+      left: scrollPos - (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setScrollPos((pos) =>
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+    );
+  }
+  function rightScroll() {
+    let rect = blogRef.current.getBoundingClientRect();
+    blogRef.current.scroll({
+      top: rect.y + 20,
+      left: scrollPos + (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setScrollPos((pos) =>
+      pos + (rect.width - rect.x) > posts.length * 320
+        ? pos
+        : pos + (rect.width - rect.x)
+    );
+  }
+  const navRef = useRef();
+  function menu() {
+    navRef.current.style.display = navRef.current.style.display == "flex"?"none":"flex";
+  }
   const navigation = [
     { id: 1, name: "Home", href: "/" },
     { id: 2, name: "Blog", href: "/blog" },
@@ -71,6 +104,7 @@ export default function Main({ posts }) {
   ];
   return (
     <>
+      <Meta />
       <section name="hero" id="hero">
         <div className="bg-white">
           <header className="absolute inset-x-0 top-0 z-50">
@@ -91,6 +125,29 @@ export default function Main({ posts }) {
                 <a href="https://www.wrenchworks.tech" className="p-1.5">
                   <span className="">WrenchWorks</span>
                 </a>
+              </div>
+              <div className="block sm:hidden">
+                <span onClick={menu} className="text-2xl">&#9781;</span>
+                <div
+                  ref={navRef}
+                  className="absolute top-14 left-0 hidden flex-col items-start justify-between w-full h-36 p-1 bg-white"
+                >
+                  {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="text-sm font-semibold leading-6 text-gray-900"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                  <Link
+                    href="/sign_in"
+                    className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                    Log in <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
               </div>
               <div className="hidden lg:flex lg:gap-x-12">
                 {navigation.map((item) => (
@@ -128,7 +185,7 @@ export default function Main({ posts }) {
               />
             </div>
 
-            <div className="w-full flex flex-row -ml-8 mainheader justify-between">
+            <div className="w-full flex -ml-8 mainheader justify-between flex-col sm:flex-row md:flex-row lg:flex-row">
               <div className="">
                 <Image
                   priority={true}
@@ -138,16 +195,16 @@ export default function Main({ posts }) {
                   height={700}
                 />
               </div>
-              <div className="flex flex-col justify-center items-center text-center">
+              <div className="flex flex-col justify-center items-center text-center ml-16 sm:ml-0 md:ml-0 lg:ml-0">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  Explore the World of Cars
+                  Explore the World of Auto
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
                   Why go anywhere when there is wrenchworks.tech for finding
-                  your dream car.
+                  your dream auto.
                   <br></br>
                   Get the proper knowledge about the features and price details
-                  about the cars.
+                  about the auto.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
@@ -204,13 +261,9 @@ export default function Main({ posts }) {
           </div>
         </div>
       </section>
-      <section
-        name="blogs"
-        id="blogs"
-        className="pt-20 lg:pt-[120px] pb-10 lg:pb-20"
-      >
+      <section name="blogs" id="blogs" className="p-4">
         <div className="container">
-          <div className="flex flex-wrap justify-center -mx-4">
+          <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">
               <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
                 <h2
@@ -231,12 +284,15 @@ export default function Main({ posts }) {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap p-2">
+          <div
+            ref={blogRef}
+            className="flex flex-nowrap p-2 overflow-x-scroll overflow-y-hidden -ml-4 sm:ml-0 scrollbar"
+          >
             {posts.map((post) => (
-              <div key={post._id} className="w-full md:w-1/2 lg:w-1/3 px-4">
-                <div className="max-w-[370px] mx-auto mb-10">
+              <div key={post._id} className="w-full md:w-1/2 lg:w-1/3 mx-7">
+                <div className="max-w-[370px] min-w-[370px] mx-auto mb-10">
                   <div className="rounded overflow-hidden mb-8">
-                    {post.mainImage && (
+                    {post.mainImage ? (
                       <Image
                         src={urlFor(post.mainImage)
                           .width(600)
@@ -246,6 +302,13 @@ export default function Main({ posts }) {
                         width={200}
                         height={200}
                         className="w-full"
+                      />
+                    ) : (
+                      <Image
+                        src={logo}
+                        alt="mainImage"
+                        width={300}
+                        height={300}
                       />
                     )}
                   </div>
@@ -307,6 +370,14 @@ export default function Main({ posts }) {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="w-full flex flex-row justify-center items-center">
+            <button onClick={leftScroll} className="text-3xl font-black">
+              &larr;
+            </button>
+            <button onClick={rightScroll} className="text-3xl font-black">
+              &rarr;
+            </button>
           </div>
         </div>
       </section>
@@ -474,14 +545,24 @@ export default function Main({ posts }) {
         </div>
       </section>
       <footer className="bg-white rounded-lg shadow m-4">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <div className=" h-16 w-30">
+        <div className="w-full mx-auto p-4 md:py-8">
+          <div className="w-full flex flex-col justify-between items-start md:flex-row">
+            <div className=" h-16 w-30 mb-10 md:mb-0">
               <a href="https://www.wrenchworks.tech">
                 <Image alt="poster" src={poster} width={200} height={100} />
               </a>
             </div>
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
+              <li className="flex flex-col justify-center items-center mr-2">
+                <Link target="_blank" href="https://instagram.com/wrenchworks_">
+                  <Image
+                    src={instagram}
+                    alt="Instagram "
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </li>
               <li>
                 <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
                   About
@@ -498,6 +579,16 @@ export default function Main({ posts }) {
               <li>
                 <Link href="/contact_us" className="hover:underline">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="hover:underline ml-2">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:underline ml-2">
+                  Terms of Service
                 </Link>
               </li>
             </ul>
