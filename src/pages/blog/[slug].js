@@ -10,16 +10,17 @@ import poster from "../../../public/poster-small.png";
 const ptComponents = {
   types: {
     image: ({ value }) => {
+      console.log(value)
       if (!value?.asset?._ref) {
         return null;
       }
       return (
         <Image
-          alt={value.alt || " "}
+          alt=""
           loading="lazy"
           width={320}
           height={240}
-          src={urlFor(value).width(320).height(240).fit("max").auto("format")}
+          src={urlFor(value).width(320).height(240).url()}
         />
       );
     },
