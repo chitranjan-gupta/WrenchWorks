@@ -1,9 +1,14 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import poster from "../../public/poster-small.png";
 export default function About() {
   return (
     <>
+      <Head>
+        <title>Wrench Works - About Us</title>
+        <meta name="description" content="Wrench Works - About Us" />
+      </Head>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
       <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
       <div className="absolute flex flex-col items-start justify-between w-full h-full p-5">
@@ -35,7 +40,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1><strong>Our Mission</strong></h1>
+              <h1>
+                <strong>Our Mission</strong>
+              </h1>
               <p>
                 At Wrench Works, our mission is to empower car owners and
                 enthusiasts with valuable resources to enhance their driving
@@ -45,7 +52,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1><strong>Who We Are</strong></h1>
+              <h1>
+                <strong>Who We Are</strong>
+              </h1>
               <p>
                 We are a dedicated team of automotive enthusiasts, industry
                 experts, and tech-savvy individuals who share a common love for
@@ -54,7 +63,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1><strong>What We Offer</strong></h1>
+              <h1>
+                <strong>What We Offer</strong>
+              </h1>
               <div>
                 <li>
                   <strong>Extensive Car Information:</strong>
@@ -95,7 +106,9 @@ export default function About() {
               </div>
             </div>
             <div>
-              <h1><strong>Our Commitment to Quality</strong></h1>
+              <h1>
+                <strong>Our Commitment to Quality</strong>
+              </h1>
               <p>
                 At Wrench Works, we are committed to maintaining the highest
                 standards of quality and accuracy in the information we provide.
@@ -104,7 +117,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1><strong>Get in Touch</strong></h1>
+              <h1>
+                <strong>Get in Touch</strong>
+              </h1>
               <p>
                 We love hearing from our users and value your feedback. Whether
                 you have a suggestion, query, or just want to say hello, feel
@@ -114,7 +129,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1><strong>Join Our Community</strong></h1>
+              <h1>
+                <strong>Join Our Community</strong>
+              </h1>
               <p>
                 Become a part of our growing community of car enthusiasts.
                 Follow us on social media platforms and subscribe to our

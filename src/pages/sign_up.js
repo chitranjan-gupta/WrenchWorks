@@ -1,17 +1,25 @@
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import poster from "../../public/poster-small.png";
 export default function Sign_Up() {
   return (
     <>
-      <form className="flex flex-col justify-center items-center mt-3 p-5" method="POST">
+      <Head>
+        <title>Sign Up Wrench Works</title>
+        <meta name="description" content="Sign Up on wrenchworks.tech" />
+      </Head>
+      <form
+        className="flex flex-col justify-center items-center mt-3 p-5"
+        method="POST"
+      >
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex flex-row justify-center items-center w-full h-16">
             <Image alt="poster" src={poster} width={200} height={100} />
           </div>
-          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up your account
-          </h2>
+          </h1>
         </div>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">

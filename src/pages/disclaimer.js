@@ -1,7 +1,12 @@
+import Head from "next/head";
 import Link from "next/link";
 export default function Disclaimer() {
   return (
     <>
+      <Head>
+        <title>Wrench Works - Disclaimer</title>
+        <meta name="description" content="Wrench Works - Disclaimer" />
+      </Head>
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
@@ -42,10 +47,10 @@ export default function Disclaimer() {
         These links to other websites do not imply a recommendation for all the
         content found on these sites. Site owners and content may change without
         notice and may occur before we have the opportunity to remove a link
-        that may have gone 'bad.' Please be also aware that when you leave our
+        that may have gone &apos;bad&apos;. Please be also aware that when you leave our
         website, other sites may have different privacy policies and terms that
         are beyond our control. Please be sure to check the Privacy Policies of
-        these sites as well as their "Terms of Service" before engaging in any
+        these sites as well as their &quot;Terms of Service&quot; before engaging in any
         business or uploading any information.
         <div>
           <li>
@@ -67,7 +72,7 @@ export default function Disclaimer() {
         </div>
         <span>
           If you require any more information or have any questions about our
-          site's disclaimer, please feel free to contact us by email at
+          site&apos;s disclaimer, please feel free to contact us by email at
           admin@wrenchworks.tech .
         </span>
       </div>

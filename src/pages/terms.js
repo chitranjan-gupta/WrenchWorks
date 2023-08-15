@@ -1,6 +1,11 @@
+import Head from "next/head";
 export default function Terms() {
   return (
     <>
+      <Head>
+        <title>Wrench Works - Terms of Service</title>
+        <meta name="description" content="Wrench Works - Terms of Service" />
+      </Head>
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
@@ -16,9 +21,9 @@ export default function Terms() {
       <div className="flex flex-col justify-between items-start p-3">
         <span>Wrench Works - Terms of Service</span>
         <span>Last Updated: 21st July 2023.</span>
-        <span>Welcome to Wrench Works ("Website").</span>
+        <span>Welcome to Wrench Works (&quot;Website&quot;).</span>
         <span>
-          Please read these Terms of Service ("Terms") carefully before using
+          Please read these Terms of Service (&quot;Terms&quot;) carefully before using
           the Website or any of its services. By accessing or using the Website,
           you agree to be bound by these Terms. If you do not agree to these
           Terms, please do not use the Website.
@@ -100,10 +105,10 @@ export default function Terms() {
             <br />
             <span>
               The information and services provided on the Website are provided
-              on an "as is" and "as available" basis without any representations
+              on an &quot;as is&quot; and &quot;as available&quot; basis without any representations
               or warranties, express or implied. Wrench Works makes no
               warranties or representations regarding the accuracy, reliability,
-              availability, or completeness of the Website's content or
+              availability, or completeness of the Website&apos;s content or
               services.
             </span>
           </li>
