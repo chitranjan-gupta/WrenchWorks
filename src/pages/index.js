@@ -9,6 +9,14 @@ import poster from "../../public/poster-small.png";
 import car from "../../img/car.png";
 import logo from "../../img/logo.png";
 import instagram from "../../img/wrenchworks-instagram.png";
+import ford from "../../img/ford.webp";
+import honda from "../../img/honda.webp";
+import hyundai from "../../img/hyundai.webp";
+import marutiSuzuki from "../../img/maruti-suzuki.webp";
+import renault from "../../img/renault.webp";
+import tata from "../../img/tata.webp";
+import volkswagen from "../../img/volkswagen.webp";
+import toyota from "../../img/toyota.webp";
 
 export default function Main({ posts }) {
   const blogRef = useRef();
@@ -39,7 +47,8 @@ export default function Main({ posts }) {
   }
   const navRef = useRef();
   function menu() {
-    navRef.current.style.display = navRef.current.style.display == "flex"?"none":"flex";
+    navRef.current.style.display =
+      navRef.current.style.display == "flex" ? "none" : "flex";
   }
   const navigation = [
     { id: 1, name: "Home", href: "/" },
@@ -127,7 +136,9 @@ export default function Main({ posts }) {
                 </a>
               </div>
               <div className="block sm:hidden">
-                <span onClick={menu} className="text-2xl">&#9781;</span>
+                <span onClick={menu} className="text-2xl">
+                  &#9781;
+                </span>
                 <div
                   ref={navRef}
                   className="absolute top-14 left-0 hidden flex-col items-start justify-between w-full h-36 p-1 bg-white"
@@ -195,24 +206,105 @@ export default function Main({ posts }) {
                   height={700}
                 />
               </div>
-              <div className="flex flex-col justify-center items-center text-center ml-16 sm:ml-0 md:ml-0 lg:ml-0">
+              <div className="w-full lg:w-3/4 lg:mt-20 flex flex-col justify-start items-center text-center mx-8 sm:ml-0 md:ml-0 lg:ml-0">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                   Explore the World of Auto
                 </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-8 text-gray-600">
                   Why go anywhere when there is wrenchworks.tech for finding
                   your dream auto.
                   <br></br>
                   Get the proper knowledge about the features and price details
                   about the auto.
                 </p>
-                <div className="mt-10 flex items-center justify-center gap-x-6">
+                <div className=" flex items-center justify-center">
                   <a
                     href="#blogs"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Get started
                   </a>
+                </div>
+                <div className="sm:w-full">
+                  <div className="lg:px-8">
+                    <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+                      Explore from variety of brands
+                    </h2>
+                    <div className="mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:grid-cols-5">
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={ford}
+                          alt="Ford"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={honda}
+                          alt="Honda"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={hyundai}
+                          alt="Hyundai"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={marutiSuzuki}
+                          alt="Maruti Suzuki"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={renault}
+                          alt="Renault"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={tata}
+                          alt="Tata"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={toyota}
+                          alt="Toyota"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
+                        <Image
+                          className="object-contain"
+                          src={volkswagen}
+                          alt="Volkswagen"
+                          fill={true}
+                          sizes="158w 48h"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
