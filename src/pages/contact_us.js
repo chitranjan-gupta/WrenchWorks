@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import poster from "../../public/poster-small.png";

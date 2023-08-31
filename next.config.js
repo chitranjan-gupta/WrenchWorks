@@ -28,6 +28,11 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "prog-ace-cdn.azureedge.net",
+        port: "",
+      },
     ],
   },
   async redirects() {

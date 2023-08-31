@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import groq from "groq";
 import { PortableText } from "@portabletext/react";
-import { client, urlFor } from "../../../lib/sanity";
+import { client, urlFor } from "@/lib/sanity";
 import poster from "../../../public/poster-small.png";
 
 const ptComponents = {

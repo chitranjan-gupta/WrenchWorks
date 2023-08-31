@@ -2,8 +2,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import groq from "groq";
-import { client, urlFor } from "../../../lib/sanity";
-import Meta from "../../../component/meta";
+import { client, urlFor } from "@/lib/sanity";
+import Meta from "@/component/meta";
 import poster from "../../../public/poster-small.png";
 
 export default function Index({ posts }) {
@@ -142,7 +142,7 @@ export default function Index({ posts }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const posts = await client.fetch(groq`
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
       _id,

@@ -2,23 +2,15 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import groq from "groq";
-import { client, urlFor } from "../../lib/sanity";
-import Meta from "../../component/meta";
-import piping from "../../img/piping.png";
+import { client, urlFor } from "@/lib/sanity";
+import Meta from "@/component/meta";
 import poster from "../../public/poster-small.png";
-import car from "../../img/car.png";
-import logo from "../../img/logo.png";
-import instagram from "../../img/wrenchworks-instagram.png";
-import ford from "../../img/ford.webp";
-import honda from "../../img/honda.webp";
-import hyundai from "../../img/hyundai.webp";
-import marutiSuzuki from "../../img/maruti-suzuki.webp";
-import renault from "../../img/renault.webp";
-import tata from "../../img/tata.webp";
-import volkswagen from "../../img/volkswagen.webp";
-import toyota from "../../img/toyota.webp";
+import { car, logo, piping, instagram, brandsLogos } from "@/img/imgexport";
+import { DropDown } from "@/component/header";
+import { navigation } from "@/lib/nav";
+import { BoltIcon } from "@heroicons/react/20/solid";
 
-export default function Main({ posts }) {
+export default function Main({ posts, cars }) {
   const blogRef = useRef();
   const [scrollPos, setScrollPos] = useState(0);
   function leftScroll() {
@@ -45,17 +37,58 @@ export default function Main({ posts }) {
         : pos + (rect.width - rect.x)
     );
   }
-  const navRef = useRef();
-  function menu() {
-    navRef.current.style.display =
-      navRef.current.style.display == "flex" ? "none" : "flex";
+  const brandsRef = useRef();
+  const [brandsPos, setBrandsPos] = useState(0);
+  function leftBrand() {
+    let rect = brandsRef.current.getBoundingClientRect();
+    brandsRef.current.scroll({
+      top: rect.y + 20,
+      left: brandsPos - (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setBrandsPos((pos) =>
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+    );
   }
-  const navigation = [
-    { id: 1, name: "Home", href: "/" },
-    { id: 2, name: "Blog", href: "/blog" },
-    { id: 3, name: "Features", href: "#features" },
-    { id: 3, name: "Marketplace", href: "#" },
-  ];
+  function rightBrand() {
+    let rect = brandsRef.current.getBoundingClientRect();
+    brandsRef.current.scroll({
+      top: rect.y + 20,
+      left: brandsPos + (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setBrandsPos((pos) =>
+      pos + (rect.width - rect.x) > posts.length * 320
+        ? pos
+        : pos + (rect.width - rect.x)
+    );
+  }
+  const carRef = useRef();
+  const [carPos, setCarPos] = useState(0);
+  function leftCar() {
+    let rect = carRef.current.getBoundingClientRect();
+    carRef.current.scroll({
+      top: rect.y + 20,
+      left: carPos - (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setCarPos((pos) =>
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+    );
+  }
+  function rightCar() {
+    let rect = carRef.current.getBoundingClientRect();
+    carRef.current.scroll({
+      top: rect.y + 20,
+      left: carPos + (rect.width - rect.x),
+      behavior: "smooth",
+    });
+    setCarPos((pos) =>
+      pos + (rect.width - rect.x) > posts.length * 320
+        ? pos
+        : pos + (rect.width - rect.x)
+    );
+  }
   const features = [
     {
       id: 1,
@@ -136,29 +169,7 @@ export default function Main({ posts }) {
                 </a>
               </div>
               <div className="block sm:hidden">
-                <span onClick={menu} className="text-2xl">
-                  &#9781;
-                </span>
-                <div
-                  ref={navRef}
-                  className="absolute top-14 left-0 hidden flex-col items-start justify-between w-full h-36 p-1 bg-white"
-                >
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-sm font-semibold leading-6 text-gray-900"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                  <Link
-                    href="/sign_in"
-                    className="text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    Log in <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </div>
+                <DropDown options={navigation} />
               </div>
               <div className="hidden lg:flex lg:gap-x-12">
                 {navigation.map((item) => (
@@ -219,7 +230,7 @@ export default function Main({ posts }) {
                 </p>
                 <div className=" flex items-center justify-center">
                   <a
-                    href="#blogs"
+                    href="#cars"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Get started
@@ -230,79 +241,38 @@ export default function Main({ posts }) {
                     <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
                       Explore from variety of brands
                     </h2>
-                    <div className="mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:grid-cols-5">
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={ford}
-                          alt="Ford"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={honda}
-                          alt="Honda"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={hyundai}
-                          alt="Hyundai"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={marutiSuzuki}
-                          alt="Maruti Suzuki"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={renault}
-                          alt="Renault"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={tata}
-                          alt="Tata"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={toyota}
-                          alt="Toyota"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
-                      <div className="relative col-span-2 h-12 w-40 lg:col-span-1">
-                        <Image
-                          className="object-contain"
-                          src={volkswagen}
-                          alt="Volkswagen"
-                          fill={true}
-                          sizes="158w 48h"
-                        />
-                      </div>
+                    <div
+                      ref={brandsRef}
+                      className="mt-10 overflow-x-scroll overflow-y-hidden grid max-w-xs grid-cols-18 grid-rows-4 gap-x-20 gap-y-10 pl-2 lg:pl-0 lg:max-w-2xl lg:grid-cols-13 lg:gap-x-32 lg:grid-rows-3 lg:gap-y-8 scrollbar"
+                    >
+                      {brandsLogos.map((logos, index) => (
+                        <div
+                          key={index}
+                          className="relative col-span-2 h-12 w-40 lg:col-span-1"
+                        >
+                          <Image
+                            className="object-contain"
+                            src={logos}
+                            alt=""
+                            fill={true}
+                            sizes="158w 48h"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="w-full flex flex-row justify-center items-center">
+                      <button
+                        onClick={leftBrand}
+                        className="text-3xl font-black"
+                      >
+                        &larr;
+                      </button>
+                      <button
+                        onClick={rightBrand}
+                        className="text-3xl font-black"
+                      >
+                        &rarr;
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -324,7 +294,7 @@ export default function Main({ posts }) {
         </div>
       </section>
       <section name="features" id="features">
-        <div className="bg-white py-24 sm:py-32">
+        <div className="bg-white py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -340,7 +310,9 @@ export default function Main({ posts }) {
                 {features.map((feature) => (
                   <div key={feature.name} className="relative pl-16">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
-                      <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"></div>
+                      <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-white">
+                        <BoltIcon className="h-5 w-5 text-amber-500" />
+                      </div>
                       {feature.name}
                     </dt>
                     <dd className="mt-2 text-base leading-7 text-gray-600">
@@ -350,6 +322,69 @@ export default function Main({ posts }) {
                 ))}
               </dl>
             </div>
+          </div>
+        </div>
+      </section>
+      <section name="cars" id="cars" className="p-4">
+        <div className="container">
+          <div className="flex flex-wrap justify-center">
+            <div className="w-full px-4">
+              <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
+                <h2
+                  className="
+              font-bold
+              text-3xl
+              sm:text-4xl
+              md:text-[40px]
+              text-dark
+              mb-4
+              "
+                >
+                  <Link href="/blog">Our Recent Cars</Link>
+                </h2>
+                <p className="text-base text-body-color">Experience the Extraordinary Journey</p>
+              </div>
+            </div>
+          </div>
+          <div ref={carRef} className="flex flex-nowrap p-2 overflow-x-scroll overflow-y-hidden -ml-4 sm:ml-0 scrollbar">
+            {cars.map((car) => (
+            <div key={car._id} className="group relative w-full lg:w-auto">
+              <div className="aspect-h-1 aspect-w-1 lg:aspect-h-2 lg:aspect-w-3 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
+                <div>
+                  <Image
+                    src={car.mainImage ? car.mainImage.imageurl : logo}
+                    alt=""
+                    fill={true}
+                    priority={false}
+                    className="object-cover object-center"
+                    sizes="100w"
+                  />
+                </div>
+              </div>
+              <div className="mt-4 flex flex-col lg:flex-row">
+                <div>
+                  <h3 className="text-sm text-gray-700">
+                    <a href={`/car/${car.brand[0]}/${car.slug.current}`}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {car.title}
+                    </a>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">{car.description}</p>
+                </div>
+                <p className="text-sm font-medium text-gray-900">
+                  {car.price}
+                </p>
+              </div>
+            </div>
+            ))}
+          </div>
+          <div className="w-full flex flex-row justify-center items-center">
+            <button onClick={leftCar} className="text-3xl font-black">
+              &larr;
+            </button>
+            <button onClick={rightCar} className="text-3xl font-black">
+              &rarr;
+            </button>
           </div>
         </div>
       </section>
@@ -693,7 +728,7 @@ export default function Main({ posts }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const posts = await client.fetch(groq`
       *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
         _id,
@@ -707,9 +742,21 @@ export async function getServerSideProps() {
         mainImage,
       }
     `);
+  const cars = await client.fetch(groq`
+    *[_type == "car"]{
+      _id,
+      title,
+      description,
+      "brand":brands[]->title,
+      price,
+      slug,
+      "mainImage":images[0]
+    }
+  `);
   return {
     props: {
       posts,
+      cars,
     },
   };
 }
