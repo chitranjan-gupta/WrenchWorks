@@ -14,21 +14,26 @@ const ptComponents = {
         return null;
       }
       return (
-        <Image
-          alt=""
-          loading="lazy"
-          width={320}
-          height={240}
-          src={urlFor(value).width(320).height(240).url()}
-        />
+        <div className="relative w-full h-96 object-contain">
+          <Image
+            alt=""
+            loading="lazy"
+            src={urlFor(value).url()}
+            fill={true}
+          />
+        </div>
       );
     },
   },
   block: {
-    h1: ({ children }) => <h1 className="text-4xl">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-3xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-2xl">{children}</h3>,
-    p: ({ children }) => <p className="text-xl">{children}</p>,
+    h1: ({ children }) => <h1 className="">{children}</h1>,
+    h2: ({ children }) => <h2 className="">{children}</h2>,
+    h3: ({ children }) => <h3 className="">{children}</h3>,
+    h4: ({ children }) => <h4 className="">{children}</h4>,
+    p: ({ children }) => <p className="">{children}</p>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-purple-500">{children}</blockquote>
+    ),
   },
 };
 
@@ -77,7 +82,7 @@ const Post = ({ post }) => {
             <Image alt="poster" src={poster} width={200} height={100} />
           </Link>
         </div>
-        <form action="#" method="POST" className="bg-white hidden lg:block">
+        <div className="bg-white hidden lg:block">
           <div className="relative bg-white">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
@@ -110,67 +115,57 @@ const Post = ({ post }) => {
               Search
             </button>
           </div>
-        </form>
+        </div>
       </header>
-      <article className="flex flex-col justify-center items-start w-full h-full px-3 sm:px-5 lg:px-80">
-        <h1 className="text-5xl text-left font-bold mb-3">{title}</h1>
-        <h3 className="text-2xl text-left mb-3 text-slate-600">
-          {description}
-        </h3>
-        <div className="flex flex-row justify-between items-center border-y w-full mt-3 mb-8 p-1">
-          <div className="flex flex-row items-center">
-            {authorImage && (
-              <div>
-                <Image
-                  src={urlFor(authorImage).width(40).height(40).url()}
-                  alt={`${name}'s picture`}
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 rounded-full bg-gray-50"
-                />
-              </div>
-            )}
-            <div className="text-sm leading-5 ml-2">
-              <p className="font-semibold text-gray-900">{name}</p>
-              <div className="flex flex-row items-center">
-                {categories && (
-                  <p className="text-gray-600">
-                    Posted in
-                    {categories.map((category) => (
-                      <span key={category}> {category}</span>
-                    ))}
-                  </p>
-                )}
-                <span className="mx-2">.</span>
-                <time className="text-gray-500 text-sm">
-                  {new Date(publishedAt).toDateString()}
-                </time>
+      <div className="flex flex-row justify-center items-center p-2 sm:px-0">
+        <article className="prose prose-stone lg:prose-xl bg-white">
+          <h1 className="">{title}</h1>
+          <h4 className=" text-slate-600">{description}</h4>
+          <div className="not-prose flex flex-row justify-between items-center border-y w-full mt-3 mb-3 p-1">
+            <div className="flex flex-row items-center">
+              {authorImage && (
+                <div className="relative h-10 w-10 bg-gray-50">
+                  <Image
+                    src={urlFor(authorImage).url()}
+                    alt={`${name}'s picture`}
+                    fill={true}
+                    sizes="100w"
+                    className="rounded-full"
+                  />
+                </div>
+              )}
+              <div className="ml-2 flex flex-col items-start justify-around">
+                <p className="font-semibold text-gray-900">{name}</p>
+                <div className="flex flex-col items-start lg:flex-row lg:items-center">
+                  {categories && (
+                    <p className="text-gray-600">
+                      Posted in
+                      {categories.map((category) => (
+                        <span key={category}> {category}</span>
+                      ))}
+                    </p>
+                  )}
+                  <span className="hidden lg:block mx-2">.</span>
+                  <time className="text-gray-500">
+                    {new Date(publishedAt).toDateString()}
+                  </time>
+                </div>
               </div>
             </div>
           </div>
-          <div>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M15.22 4.93a.42.42 0 0 1-.12.13h.01a.45.45 0 0 1-.29.08.52.52 0 0 1-.3-.13L12.5 3v7.07a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5V3.02l-2 2a.45.45 0 0 1-.57.04h-.02a.4.4 0 0 1-.16-.3.4.4 0 0 1 .1-.32l2.8-2.8a.5.5 0 0 1 .7 0l2.8 2.8a.42.42 0 0 1 .07.5zm-.1.14zm.88 2h1.5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2H8a.5.5 0 0 1 .35.14c.1.1.15.22.15.35a.5.5 0 0 1-.15.35.5.5 0 0 1-.35.15H6.4c-.5 0-.9.4-.9.9v10.2a.9.9 0 0 0 .9.9h11.2c.5 0 .9-.4.9-.9V8.96c0-.5-.4-.9-.9-.9H16a.5.5 0 0 1 0-1z"
-                fill="currentColor"
-              ></path>
-            </svg>
+          <div className="relative w-full h-96 object-contain">
+            <Image
+              src={post.mainImage ? urlFor(post.mainImage).url() : poster}
+              alt="mainImage"
+              fill={true}
+              sizes="100w"
+            />
           </div>
-        </div>
-        <div className="relative w-full h-96 object-contain">
-          <Image
-            src={post.mainImage ? urlFor(post.mainImage).url() : poster}
-            alt="mainImage"
-            fill={true}
-            sizes="100"
-          />
-        </div>
-        <div className="flex flex-col justify-center w-full text-xl">
-          <PortableText value={body} components={ptComponents}/>
-        </div>
-      </article>
+          <div className="w-full pt-3">
+            <PortableText value={body} components={ptComponents} />
+          </div>
+        </article>
+      </div>
     </>
   );
 };

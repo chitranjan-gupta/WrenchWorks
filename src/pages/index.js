@@ -248,7 +248,7 @@ export default function Main({ posts, cars }) {
                       {brandsLogos.map((logos, index) => (
                         <div
                           key={index}
-                          className="relative col-span-2 h-12 w-40 lg:col-span-1"
+                          className="relative h-12 w-40"
                         >
                           <Image
                             className="object-contain"
