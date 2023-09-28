@@ -4,10 +4,10 @@ import Link from "next/link";
 import groq from "groq";
 import { client, urlFor } from "@/lib/sanity";
 import Meta from "@/component/meta";
-import poster from "../../public/poster-small.png";
-import { car, logo, piping, instagram, brandsLogos } from "@/img/imgexport";
 import { DropDown } from "@/component/header";
 import { navigation } from "@/lib/nav";
+import poster from "../../public/poster-small.png";
+import { car, logo, piping, instagram, brandsLogos } from "@/img/imgexport";
 import { BoltIcon } from "@heroicons/react/20/solid";
 
 export default function Main({ posts, cars }) {
@@ -58,7 +58,7 @@ export default function Main({ posts, cars }) {
       behavior: "smooth",
     });
     setBrandsPos((pos) =>
-      pos + (rect.width - rect.x) > posts.length * 320
+      pos + (rect.width - rect.x) > (13 * 160) / 2
         ? pos
         : pos + (rect.width - rect.x)
     );
@@ -217,11 +217,11 @@ export default function Main({ posts, cars }) {
                   height={700}
                 />
               </div>
-              <div className="w-full lg:w-3/4 lg:mt-20 flex flex-col justify-start items-center text-center mx-8 sm:ml-0 md:ml-0 lg:ml-0">
+              <div className="w-full lg:w-3/4 lg:mt-2 flex flex-col justify-start items-center text-center mx-8 sm:ml-0 md:ml-0 lg:ml-0">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                   Explore the World of Auto
                 </h1>
-                <p className="text-lg leading-8 text-gray-600">
+                <p className="text-lg leading-8 text-gray-600 my-5">
                   Why go anywhere when there is wrenchworks.tech for finding
                   your dream auto.
                   <br></br>
@@ -243,15 +243,15 @@ export default function Main({ posts, cars }) {
                     </h2>
                     <div
                       ref={brandsRef}
-                      className="mt-10 overflow-x-scroll overflow-y-hidden grid max-w-xs grid-cols-18 grid-rows-4 gap-x-20 gap-y-10 pl-2 lg:pl-0 lg:max-w-2xl lg:grid-cols-13 lg:gap-x-32 lg:grid-rows-3 lg:gap-y-8 scrollbar"
+                      className={`mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[7rem] gap-y-10 pl-2 lg:pl-0 lg:max-w-2xl lg:grid-cols-13 lg:gap-x-32 lg:grid-rows-3 lg:gap-y-8 scrollbar bg-transparent`}
                     >
                       {brandsLogos.map((logos, index) => (
                         <div
                           key={index}
-                          className="relative h-12 w-40"
+                          className="relative h-12 w-40 bg-transparent"
                         >
                           <Image
-                            className="object-contain"
+                            className="object-contain bg-transparent"
                             src={logos}
                             alt=""
                             fill={true}
@@ -342,40 +342,47 @@ export default function Main({ posts, cars }) {
                 >
                   <Link href="/blog">Our Recent Cars</Link>
                 </h2>
-                <p className="text-base text-body-color">Experience the Extraordinary Journey</p>
-              </div>
-            </div>
-          </div>
-          <div ref={carRef} className="flex flex-nowrap p-2 overflow-x-scroll overflow-y-hidden -ml-4 sm:ml-0 scrollbar">
-            {cars.map((car) => (
-            <div key={car._id} className="group relative w-full lg:w-auto">
-              <div className="aspect-h-1 aspect-w-1 lg:aspect-h-2 lg:aspect-w-3 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-                <div>
-                  <Image
-                    src={car.mainImage ? car.mainImage.imageurl : logo}
-                    alt=""
-                    fill={true}
-                    priority={false}
-                    className="object-cover object-center"
-                    sizes="100w"
-                  />
-                </div>
-              </div>
-              <div className="mt-4 flex flex-col lg:flex-row">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={`/car/${car.brand[0]}/${car.slug.current}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {car.title}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{car.description}</p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">
-                  {car.price}
+                <p className="text-base text-body-color">
+                  Experience the Extraordinary Journey
                 </p>
               </div>
             </div>
+          </div>
+          <div
+            ref={carRef}
+            className="flex flex-nowrap p-2 overflow-x-scroll overflow-y-hidden -ml-4 sm:ml-0 scrollbar"
+          >
+            {cars.map((car) => (
+              <div key={car._id} className="group relative w-full lg:w-auto">
+                <div className="aspect-h-1 aspect-w-1 lg:aspect-h-2 lg:aspect-w-3 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
+                  <div>
+                    <Image
+                      src={car.mainImage ? car.mainImage.imageurl : logo}
+                      alt=""
+                      fill={true}
+                      priority={false}
+                      className="object-cover object-center"
+                      sizes="100w"
+                    />
+                  </div>
+                </div>
+                <div className="mt-4 flex flex-col lg:flex-row">
+                  <div>
+                    <h3 className="text-sm text-gray-700">
+                      <a href={`/car/${car.brand[0]}/${car.slug.current}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {car.title}
+                      </a>
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      {car.description}
+                    </p>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {car.price}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
           <div className="w-full flex flex-row justify-center items-center">
@@ -421,10 +428,7 @@ export default function Main({ posts, cars }) {
                   <div className="rounded overflow-hidden mb-8">
                     {post.mainImage ? (
                       <Image
-                        src={urlFor(post.mainImage)
-                          .width(600)
-                          .height(600)
-                          .url()}
+                        src={urlFor(post.mainImage).url()}
                         alt="mainImage"
                         width={200}
                         height={200}
@@ -434,8 +438,8 @@ export default function Main({ posts, cars }) {
                       <Image
                         src={logo}
                         alt="mainImage"
-                        width={300}
-                        height={300}
+                        width={200}
+                        height={200}
                       />
                     )}
                   </div>
@@ -443,19 +447,18 @@ export default function Main({ posts, cars }) {
                     <time className="text-gray-500">
                       {new Date(post.publishedAt).toDateString()}
                     </time>
-                    <Link
-                      href={`/blog/${encodeURIComponent(post.slug.current)}`}
-                      className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                    >
+                    <div className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                       {post.categories &&
                         post.categories.map((category) => (
-                          <span key={category}> {category}</span>
+                          <Link href={`/blog/category`} key={category}>
+                            {category}
+                          </Link>
                         ))}
-                    </Link>
+                    </div>
                   </div>
                   <div>
                     <h3>
-                      <Link
+                      <a
                         href={`/blog/${encodeURIComponent(post.slug.current)}`}
                         className="
                     font-semibold
@@ -470,7 +473,7 @@ export default function Main({ posts, cars }) {
                     "
                       >
                         {post.title}
-                      </Link>
+                      </a>
                     </h3>
                     <p className="text-base text-body-color">
                       {post.description}
@@ -478,7 +481,7 @@ export default function Main({ posts, cars }) {
                   </div>
                   <div className="relative mt-8 flex items-center gap-x-4">
                     <Image
-                      src={urlFor(post.authorImage).width(40).height(40).url()}
+                      src={urlFor(post.authorImage).url()}
                       alt={`${post.name}'s picture`}
                       width={460}
                       height={460}
@@ -486,7 +489,7 @@ export default function Main({ posts, cars }) {
                     />
                     <div className="text-sm leading-6">
                       <p className="font-semibold text-gray-900">
-                        <Link href="/blog">
+                        <Link href="/blog/author">
                           <span className="absolute inset-0" />
                           {post.name}
                         </Link>
