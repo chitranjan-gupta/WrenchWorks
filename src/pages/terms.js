@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import poster from "../../public/poster-small.png";
 export default function Terms() {
   return (
     <>
@@ -18,15 +21,22 @@ export default function Terms() {
           }}
         />
       </div>
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="flex flex-row justify-center items-center w-full h-16">
+          <Link href="/">
+            <Image alt="poster" src={poster} width={200} height={100} />
+          </Link>
+        </div>
+      </div>
       <div className="flex flex-col justify-between items-start p-3">
         <span>Wrench Works - Terms of Service</span>
         <span>Last Updated: 21st July 2023.</span>
         <span>Welcome to Wrench Works (&quot;Website&quot;).</span>
         <span>
-          Please read these Terms of Service (&quot;Terms&quot;) carefully before using
-          the Website or any of its services. By accessing or using the Website,
-          you agree to be bound by these Terms. If you do not agree to these
-          Terms, please do not use the Website.
+          Please read these Terms of Service (&quot;Terms&quot;) carefully
+          before using the Website or any of its services. By accessing or using
+          the Website, you agree to be bound by these Terms. If you do not agree
+          to these Terms, please do not use the Website.
         </span>
         <div>
           <li className="list-decimal">
@@ -105,11 +115,11 @@ export default function Terms() {
             <br />
             <span>
               The information and services provided on the Website are provided
-              on an &quot;as is&quot; and &quot;as available&quot; basis without any representations
-              or warranties, express or implied. Wrench Works makes no
-              warranties or representations regarding the accuracy, reliability,
-              availability, or completeness of the Website&apos;s content or
-              services.
+              on an &quot;as is&quot; and &quot;as available&quot; basis without
+              any representations or warranties, express or implied. Wrench
+              Works makes no warranties or representations regarding the
+              accuracy, reliability, availability, or completeness of the
+              Website&apos;s content or services.
             </span>
           </li>
           <li className="list-decimal">

@@ -7,7 +7,16 @@ import Meta from "@/component/meta";
 import { DropDown } from "@/component/header";
 import { navigation } from "@/lib/nav";
 import poster from "../../public/poster-small.png";
-import { car, logo, piping, instagram, brandsLogos } from "@/img/imgexport";
+import {
+  car,
+  logo,
+  piping,
+  instagram,
+  threads,
+  twitter,
+  facebook,
+  brandsLogos,
+} from "@/img/imgexport";
 import { BoltIcon } from "@heroicons/react/20/solid";
 
 export default function Main({ posts, cars }) {
@@ -187,7 +196,7 @@ export default function Main({ posts, cars }) {
                   href="/sign_in"
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Log in <span aria-hidden="true">&rarr;</span>
+                  Sign In <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
             </nav>
@@ -207,7 +216,7 @@ export default function Main({ posts, cars }) {
               />
             </div>
 
-            <div className="w-full flex -ml-8 mainheader justify-between flex-col sm:flex-row md:flex-row lg:flex-row">
+            <div className="w-full flex -ml-8 justify-between flex-col sm:flex-row md:flex-row lg:flex-row">
               <div className="">
                 <Image
                   priority={true}
@@ -250,13 +259,15 @@ export default function Main({ posts, cars }) {
                           key={index}
                           className="relative h-12 w-40 bg-transparent"
                         >
-                          <Image
-                            className="object-contain bg-transparent"
-                            src={logos}
-                            alt=""
-                            fill={true}
-                            sizes="158w 48h"
-                          />
+                          <a href={logos[1]} target="_blank">
+                            <Image
+                              className="object-contain bg-transparent"
+                              src={logos[0]}
+                              alt={logos[1]}
+                              fill={true}
+                              sizes="158w 48h"
+                            />
+                          </a>
                         </div>
                       ))}
                     </div>
@@ -687,6 +698,28 @@ export default function Main({ posts, cars }) {
                     width={20}
                     height={20}
                   />
+                </Link>
+              </li>
+              <li className="flex flex-col justify-center items-center mr-2">
+                <Link
+                  target="_blank"
+                  href="https://www.threads.net/@wrenchworks_"
+                >
+                  <Image src={threads} alt="Threads" width={20} height={20} />
+                </Link>
+              </li>
+              <li className="flex flex-col justify-center items-center mr-2">
+                <Link target="_blank" href="https://twitter.com/@wrenchworks_">
+                  <Image src={twitter} alt="Twitter" width={20} height={20} />
+                </Link>
+              </li>
+              <li className="flex flex-col justify-center items-center mr-2">
+                <Link
+                  target="_blank"
+                  href="https://www.facebook.com/profile.php?id=100094893294335"
+                  data-href="https://www.facebook.com/profile.php?id=100095089629691"
+                >
+                  <Image src={facebook} alt="Facebook" width={20} height={20} />
                 </Link>
               </li>
               <li>

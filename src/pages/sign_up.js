@@ -15,7 +15,9 @@ export default function Sign_Up() {
       >
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex flex-row justify-center items-center w-full h-16">
-            <Image alt="poster" src={poster} width={200} height={100} />
+            <Link href="/">
+              <Image alt="poster" src={poster} width={200} height={100} />
+            </Link>
           </div>
           <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up your account
