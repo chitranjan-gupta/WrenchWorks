@@ -20,3 +20,29 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.header-list{
+  display: none;
+}
+
+.header-sign{
+  display: none;
+}
+
+.header-drop{
+  display: block;
+}
+
+@media(min-width:1024px){
+  .header-list{
+    display: flex;
+    column-gap: 3rem;
+  }
+  .header-sign{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .header-drop{
+    display: none;
+  }
+}

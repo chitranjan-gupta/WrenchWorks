@@ -4,7 +4,8 @@ import Image from "next/image";
 import groq from "groq";
 import { client, urlFor } from "@/lib/sanity";
 import Meta from "@/component/meta";
-import poster from "../../../public/poster-small.png";
+import Header from "@/component/header";
+import { navigation } from "@/lib/nav";
 
 export default function Index({ posts }) {
   const [query, setQuery] = useState("");
@@ -29,14 +30,8 @@ export default function Index({ posts }) {
   return (
     <>
       <Meta />
-      <div className="w-full h-full p-5">
-        <header className="flex flex-row justify-between items-center mb-8">
-          <div className=" h-16 w-30 relative">
-            <Link href="/">
-              <Image alt="poster" src={poster} width={200} height={100} />
-            </Link>
-          </div>
-        </header>
+      <Header options={navigation} />
+      <div className="w-full h-full p-5 mt-10 -z-10 absolute">
         <div className="mb-4">
           <div className="relative bg-white">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -88,9 +83,11 @@ export default function Index({ posts }) {
                 ({
                   _id,
                   title = "",
+                  name = "",
                   categories,
-                  slug = "",
                   publishedAt = "",
+                  slug = "",
+                  authorImage,
                   mainImage,
                 }) => (
                   <div
@@ -103,20 +100,29 @@ export default function Index({ posts }) {
                           : "favicon-32x32.png"
                       }")`,
                     }}
+                    onClick={() =>
+                      window.open(
+                        `https://wrenchworks.tech/blog/${encodeURIComponent(
+                          slug.current
+                        )}`,
+                        "_blank"
+                      )
+                    }
                   >
                     <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b dark:via-transparent dark:from-gray-900 dark:to-gray-900"></div>
                     <div className="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
                       <a
                         rel="noopener noreferrer"
-                        href="/category"
-                        className="px-3 py-2 text-xs font-semibold tracki uppercase dark:text-gray-100 bgundefined"
+                        href={`/blog/category`}
+                        className="px-3 py-2 text-xs font-semibold tracki uppercase text-gray-100"
+                        onClick={(event) => event.stopPropagation()}
                       >
                         {categories &&
                           categories.map((category) => (
                             <span key={category}> {category}</span>
                           ))}
                       </a>
-                      <div className="flex flex-col justify-start text-center dark:text-gray-100">
+                      <div className="flex flex-col justify-start text-center text-gray-100">
                         <span className="text-3xl font-semibold leadi tracki">
                           {new Date(publishedAt).getDate()}
                         </span>
@@ -125,14 +131,31 @@ export default function Index({ posts }) {
                         </span>
                       </div>
                     </div>
-                    <h2 className="z-10 p-5">
+                    <div className="p-5">
+                      <div className="relative flex items-center gap-x-4 mb-1">
+                        <Image
+                          src={urlFor(authorImage).url()}
+                          alt={`${name}'s picture`}
+                          width={460}
+                          height={460}
+                          className="h-10 w-10 rounded-full bg-gray-50"
+                        />
+                        <div className="text-sm leading-6">
+                          <p className="font-semibold text-gray-100">
+                            <Link href="/blog/author" onClick={(event) => event.stopPropagation()}>{name}</Link>
+                          </p>
+                        </div>
+                      </div>
                       <Link
                         href={`/blog/${encodeURIComponent(slug.current)}`}
-                        className="font-medium text-md hover:underline dark:text-gray-100"
+                        onClick={(event) => event.stopPropagation()}
+                        className="relative"
                       >
-                        {title}
+                        <h2 className="font-medium text-md hover:underline text-white">
+                          {title}
+                        </h2>
                       </Link>
-                    </h2>
+                    </div>
                   </div>
                 )
               )}
@@ -147,9 +170,11 @@ export async function getServerSideProps() {
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
       _id,
       title,
+      "name": author->name,
       "categories": categories[]->title,
       publishedAt,
       slug,
+      "authorImage": author->image,
       mainImage
     }
   `);

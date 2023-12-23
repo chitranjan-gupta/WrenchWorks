@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import groq from "groq";
 import { client, urlFor } from "@/lib/sanity";
 import Meta from "@/component/meta";
-import { DropDown } from "@/component/header";
+import Header from "@/component/header";
 import { navigation } from "@/lib/nav";
 import poster from "../../public/poster-small.png";
 import {
@@ -148,7 +148,7 @@ export default function Main({ posts, cars }) {
     {
       id: 3,
       name: "Anurag Pandey",
-      role: "Frontend Engineer",
+      role: "Co-Founder / CIO",
       url: "https://github.com/Anurag7645",
       imageUrl: "https://avatars.githubusercontent.com/u/114188019?v=4",
     },
@@ -158,50 +158,6 @@ export default function Main({ posts, cars }) {
       <Meta />
       <section name="hero" id="hero">
         <div className="bg-white">
-          <header className="absolute inset-x-0 top-0 z-50">
-            <nav
-              className="flex items-center justify-between p-4 lg:px-8"
-              aria-label="Global"
-            >
-              <div className="flex lg:flex-1">
-                <div className="h-8 w-8">
-                  <Image
-                    priority={true}
-                    alt="logo"
-                    src={logo}
-                    width={50}
-                    height={50}
-                  />
-                </div>
-                <a href="https://www.wrenchworks.tech" className="p-1.5">
-                  <span className="">WrenchWorks</span>
-                </a>
-              </div>
-              <div className="block sm:hidden">
-                <DropDown options={navigation} />
-              </div>
-              <div className="hidden lg:flex lg:gap-x-12">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <Link
-                  href="/sign_in"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Sign In <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </nav>
-          </header>
-
           <div className="relative isolate px-6 pt-14 lg:px-8">
             <div
               className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -215,12 +171,19 @@ export default function Main({ posts, cars }) {
                 }}
               />
             </div>
-
+            <Header options={navigation}>
+              <a
+                href="#features"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Features
+              </a>
+            </Header>
             <div className="w-full flex -ml-8 justify-between flex-col sm:flex-row md:flex-row lg:flex-row">
               <div className="">
                 <Image
                   priority={true}
-                  alt=""
+                  alt="mainImage"
                   src={car}
                   width={500}
                   height={700}
@@ -252,7 +215,7 @@ export default function Main({ posts, cars }) {
                     </h2>
                     <div
                       ref={brandsRef}
-                      className={`mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[7rem] gap-y-10 pl-2 lg:pl-0 lg:max-w-2xl lg:grid-cols-13 lg:gap-x-32 lg:grid-rows-3 lg:gap-y-8 scrollbar bg-transparent`}
+                      className={`mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[6.5rem] gap-y-10 pl-14 py-1 lg:pl-0 lg:max-w-3xl lg:grid-cols-13 lg:gap-x-28 lg:grid-rows-3 lg:gap-y-7 scrollbar bg-transparent`}
                     >
                       {brandsLogos.map((logos, index) => (
                         <div
@@ -261,11 +224,11 @@ export default function Main({ posts, cars }) {
                         >
                           <a href={logos[1]} target="_blank">
                             <Image
-                              className="object-contain bg-transparent"
+                              className="object-contain bg-transparent w-auto h-auto"
                               src={logos[0]}
                               alt={logos[1]}
-                              fill={true}
-                              sizes="158w 48h"
+                              width={90}
+                              height={90}
                             />
                           </a>
                         </div>
@@ -322,7 +285,9 @@ export default function Main({ posts, cars }) {
                   <div key={feature.name} className="relative pl-16">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-white">
-                        <BoltIcon className="h-5 w-5 text-amber-500" />
+                        <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                          <BoltIcon className="h-5 w-5 text-amber-500" />
+                        </div>
                       </div>
                       {feature.name}
                     </dt>
@@ -369,7 +334,7 @@ export default function Main({ posts, cars }) {
                   <div>
                     <Image
                       src={car.mainImage ? car.mainImage.imageurl : logo}
-                      alt=""
+                      alt={car.slug.current}
                       fill={true}
                       priority={false}
                       className="object-cover object-center"
@@ -542,7 +507,7 @@ export default function Main({ posts, cars }) {
                       width={460}
                       height={460}
                       src={person.imageUrl}
-                      alt=""
+                      alt={person.name}
                     />
                     <a href={person.url}>
                       <div>
@@ -569,7 +534,7 @@ export default function Main({ posts, cars }) {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
         <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
         <div className="mx-auto">
-          <h1 className="mx-auto text-2xl text-center">Testimonials</h1>
+          <h2 className="mx-auto text-2xl text-center">Testimonials</h2>
         </div>
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
           <div className="mx-auto h-28 w-52 p-1">
@@ -578,6 +543,7 @@ export default function Main({ posts, cars }) {
               height={200}
               src={piping}
               alt="Testimonial logo"
+              className="w-auto h-auto"
             />
           </div>
           <figure className="mt-10">
@@ -592,11 +558,11 @@ export default function Main({ posts, cars }) {
             </blockquote>
             <figcaption className="mt-10">
               <Image
-                className="mx-auto h-14 w-14 rounded-full"
+                className="mx-auto h-auto w-auto rounded-full"
                 width={60}
                 height={60}
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
+                alt="Testimonial CEO"
               />
               <div className="mt-4 flex items-center justify-center space-x-3 text-base">
                 <div className="font-semibold text-gray-900">Selena</div>
@@ -649,7 +615,9 @@ export default function Main({ posts, cars }) {
               </div>
               <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
                 <div className="flex flex-col items-start">
-                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10"></div>
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                    <BoltIcon className="h-5 w-5 text-amber-500" />
+                  </div>
                   <dt className="mt-4 font-semibold text-white">
                     Weekly articles
                   </dt>
@@ -658,7 +626,9 @@ export default function Main({ posts, cars }) {
                   </dd>
                 </div>
                 <div className="flex flex-col items-start">
-                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10"></div>
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                    <BoltIcon className="h-5 w-5 text-amber-500" />
+                  </div>
                   <dt className="mt-4 font-semibold text-white">No spam</dt>
                   <dd className="mt-2 leading-7 text-gray-400">
                     We do not send spam emails.
@@ -684,44 +654,81 @@ export default function Main({ posts, cars }) {
       <footer className="bg-white rounded-lg shadow m-4">
         <div className="w-full mx-auto p-4 md:py-8">
           <div className="w-full flex flex-col justify-between items-start md:flex-row">
-            <div className=" h-16 w-30 mb-10 md:mb-0">
-              <a href="https://www.wrenchworks.tech">
-                <Image alt="poster" src={poster} width={200} height={100} />
-              </a>
-            </div>
-            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
-              <li className="flex flex-col justify-center items-center mr-2">
-                <Link target="_blank" href="https://instagram.com/wrenchworks_">
+            <div className="md:w-1/4">
+              <div className="h-16 w-30 mb-10 md:mb-0">
+                <a href="https://www.wrenchworks.tech">
                   <Image
-                    src={instagram}
-                    alt="Instagram "
-                    width={20}
-                    height={20}
+                    alt="poster"
+                    src={poster}
+                    width={200}
+                    height={100}
+                    className="w-auto h-auto"
                   />
-                </Link>
-              </li>
-              <li className="flex flex-col justify-center items-center mr-2">
+                </a>
+              </div>
+            </div>
+            <ul className="grid grid-cols-1 grid-rows-4 justify-start gap-y-2 md:w-1/2 md:grid-rows-2 md:grid-cols-2">
+              <li className="flex">
                 <Link
                   target="_blank"
+                  className="flex flex-row items-center"
+                  href="https://instagram.com/wrenchworks_"
+                >
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                    <Image
+                      src={instagram}
+                      alt="Instagram "
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <span className="ml-2">instagram.com/wrenchworks_</span>
+                </Link>
+              </li>
+              <li className="flex">
+                <Link
+                  target="_blank"
+                  className="flex flex-row items-center"
                   href="https://www.threads.net/@wrenchworks_"
                 >
-                  <Image src={threads} alt="Threads" width={20} height={20} />
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                    <Image src={threads} alt="Threads" width={20} height={20} />
+                  </div>
+                  <span className="ml-2">threads.net/@wrenchworks_</span>
                 </Link>
               </li>
-              <li className="flex flex-col justify-center items-center mr-2">
-                <Link target="_blank" href="https://twitter.com/@wrenchworks_">
-                  <Image src={twitter} alt="Twitter" width={20} height={20} />
-                </Link>
-              </li>
-              <li className="flex flex-col justify-center items-center mr-2">
+              <li className="flex">
                 <Link
                   target="_blank"
+                  className="flex flex-row items-center"
+                  href="https://twitter.com/@wrenchworks_"
+                >
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                    <Image src={twitter} alt="Twitter" width={20} height={20} />
+                  </div>
+                  <span className="ml-2">x.com/@wrenchworks_</span>
+                </Link>
+              </li>
+              <li className="flex">
+                <Link
+                  target="_blank"
+                  className="flex flex-row items-center"
                   href="https://www.facebook.com/profile.php?id=100094893294335"
                   data-href="https://www.facebook.com/profile.php?id=100095089629691"
                 >
-                  <Image src={facebook} alt="Facebook" width={20} height={20} />
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                    <Image
+                      src={facebook}
+                      alt="Facebook"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <span className="ml-2">facebook.com/wrenchworks</span>
                 </Link>
               </li>
+            </ul>
+            <ul className="md:w-1/4 flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
               <li>
                 <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
                   About
@@ -794,5 +801,6 @@ export async function getStaticProps() {
       posts,
       cars,
     },
+    revalidate: 10,
   };
 }

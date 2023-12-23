@@ -28,9 +28,9 @@ export default function About() {
         <div>
           <div className="flex flex-col justify-evenly items-start">
             <div>
-              <h1>
+              <h2>
                 <strong>Introduction</strong>
-              </h1>
+              </h2>
               <p>
                 Welcome to WrenchWorks, your one-stop destination for
                 comprehensive car information and reliable servicing details. We
@@ -40,9 +40,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>Our Mission</strong>
-              </h1>
+              </h2>
               <p>
                 At Wrench Works, our mission is to empower car owners and
                 enthusiasts with valuable resources to enhance their driving
@@ -52,9 +52,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>Who We Are</strong>
-              </h1>
+              </h2>
               <p>
                 We are a dedicated team of automotive enthusiasts, industry
                 experts, and tech-savvy individuals who share a common love for
@@ -63,9 +63,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>What We Offer</strong>
-              </h1>
+              </h2>
               <div>
                 <li>
                   <strong>Extensive Car Information:</strong>
@@ -106,9 +106,9 @@ export default function About() {
               </div>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>Our Commitment to Quality</strong>
-              </h1>
+              </h2>
               <p>
                 At Wrench Works, we are committed to maintaining the highest
                 standards of quality and accuracy in the information we provide.
@@ -117,9 +117,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>Get in Touch</strong>
-              </h1>
+              </h2>
               <p>
                 We love hearing from our users and value your feedback. Whether
                 you have a suggestion, query, or just want to say hello, feel
@@ -129,9 +129,9 @@ export default function About() {
               </p>
             </div>
             <div>
-              <h1>
+              <h2>
                 <strong>Join Our Community</strong>
-              </h1>
+              </h2>
               <p>
                 Become a part of our growing community of car enthusiasts.
                 Follow us on social media platforms and subscribe to our

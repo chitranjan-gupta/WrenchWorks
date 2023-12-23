@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -6,6 +5,8 @@ import groq from "groq";
 import { PortableText } from "@portabletext/react";
 import { client, urlFor } from "@/lib/sanity";
 import poster from "../../../public/poster-small.png";
+import Header from "@/component/header";
+import { navigation } from "@/lib/nav";
 
 const ptComponents = {
   types: {
@@ -76,51 +77,11 @@ const Post = ({ post }) => {
         <meta name="og:locale" content="en_US" />
         <meta name="og:type" content="article" />
       </Head>
-      <header className="flex flex-row justify-between items-center p-1 lg:p-3 mb-2">
-        <div className=" h-16 w-30">
-          <Link href="/">
-            <Image alt="poster" src={poster} width={200} height={100} />
-          </Link>
-        </div>
-        <div className="bg-white hidden lg:block">
-          <div className="relative bg-white">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg
-                className="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
-            <input
-              type="search"
-              id="default-search"
-              className="block w-full p-4 pl-10 text-sm border border-gray-300 rounded-lg bg-gray-50"
-              placeholder="Search blogs"
-              required
-            />
-            <button
-              type="submit"
-              className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </header>
-      <div className="flex flex-row justify-center items-center p-2 sm:px-0">
+      <Header options={navigation}/>
+      <div className="flex flex-row justify-center items-center p-2 sm:px-0 mt-10">
         <article className="prose prose-stone lg:prose-xl bg-white">
           <h1 className="">{title}</h1>
-          <h4 className=" text-slate-600">{description}</h4>
+          <h4 className="text-slate-600">{description}</h4>
           <div className="not-prose flex flex-row justify-between items-center border-y w-full mt-3 mb-3 p-1">
             <div className="flex flex-row items-center">
               {authorImage && (
@@ -188,6 +149,7 @@ export async function getStaticProps(context) {
     props: {
       post,
     },
+    revalidate: 10,
   };
 }
 

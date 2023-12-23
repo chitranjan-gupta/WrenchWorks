@@ -6,7 +6,7 @@ export default function Meta() {
       <meta name="title" content="WrenchWorks" />
       <meta
         name="description"
-        content="Discover detailed information about the latest car models and their standout features. From advanced safety technologies to cutting-edge entertainment systems, explore how each car is designed to enhance your driving experience."
+        content="Discover detailed information about the latest car models and their standout features."
       />
       <meta
         name="image"
@@ -21,6 +21,7 @@ export default function Meta() {
         itemProp="image"
         content="https://www.wrenchworks.tech/poster-small.png"
       />
+      <meta name="theme-color" content="rgb(79 70 229 / 1)" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content="Wrench Works" />
       <meta

@@ -30,9 +30,9 @@ export default function Index({ models }) {
         <title>Cars</title>
       </Head>
       <Header options={navigation}/>
-      <div className="bg-white flex flex-col lg:flex-row">
+      <div className="absolute bg-white flex flex-col lg:flex-row top-14 -z-10">
         <div className="flex flex-row justify-center items-center lg:block lg:ml-8">
-          <div className=" w-80 h-80">
+          <div className="w-80 h-80">
             <div className="h-full w-full rounded-md bg-white shadow-lg p-5">
               <div>
                 <strong>Explore</strong>

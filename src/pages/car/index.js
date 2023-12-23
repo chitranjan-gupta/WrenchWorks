@@ -13,24 +13,23 @@ export default function Index({ brands }) {
   const products = [
     {
       id: 1,
-      name: "Basic Tee",
+      name: "Mahindra Thar",
       href: "#",
-      imageSrc:
-        "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      imageSrc: "",
       imageAlt: "Thar",
-      price: "$35",
+      price: "",
       color: "Black",
     },
   ];
   function getLogo(name) {
-    return brandsLogos.find((val) => val.src.includes(name));
+    return brandsLogos.find((img) => img[0].src.includes(name))[0];
   }
   return (
     <>
       <Header options={navigation}/>
-      <div className="bg-white flex flex-col lg:flex-row">
-        <div className="ml-8">
-          <div className=" w-80 h-80">
+      <div className="absolute bg-white flex flex-col lg:flex-row top-14 -z-10">
+        <div className="ml-1">
+          <div className="w-80 h-80">
             <div className="h-full w-full rounded-md bg-white shadow-lg p-5">
               <div>
                 <strong>Explore</strong>

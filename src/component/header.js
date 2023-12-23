@@ -1,10 +1,27 @@
-import Link from "next/link";
 import { Fragment } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { logo } from "@/img/imgexport";
 import { Menu, Transition } from "@headlessui/react";
 import { Bars3BottomRightIcon } from "@heroicons/react/20/solid";
 
-export function DropDown({ options }) {
+export function NavItem({ option }) {
+  return (
+    <Menu.Item>
+      {({ active }) => (
+        <button
+          className={`${
+            active ? "bg-violet-500 text-gray-900" : "text-gray-900"
+          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+        >
+          <a href={option.href}>{option.name}</a>
+        </button>
+      )}
+    </Menu.Item>
+  );
+}
+
+function DropDown({ children, options }) {
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
@@ -28,19 +45,19 @@ export function DropDown({ options }) {
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               {options.map((option) => (
-                <Menu.Item key={option.name}>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? "bg-violet-500 text-gray-900" : "text-gray-900"
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      <a href={option.href}>{option.name}</a>
-                    </button>
-                  )}
-                </Menu.Item>
+                <NavItem key={option.name} option={option} />
               ))}
             </div>
+            {children ? (
+              <NavItem
+                option={{
+                  name: children.props.children,
+                  href: children.props.href,
+                }}
+              />
+            ) : (
+              <></>
+            )}
           </Menu.Items>
         </Transition>
       </Menu>
@@ -48,25 +65,54 @@ export function DropDown({ options }) {
   );
 }
 
-export default function Header({ options }) {
+export default function Header({ children, className = "", options = [] }) {
   return (
-    <>
-      <header className="w-full flex flex-row justify-between items-center z-10">
-        <div className="lg:pl-10">
-          <Link href="/">
+    <header
+      className={`absolute block top-0 left-0 right-0 w-full z-50 ${className}`}
+    >
+      <nav
+        className="flex items-center justify-between p-4 lg:px-5 w-full"
+        aria-label="Global"
+      >
+        <div className="flex">
+          <div className="h-8 w-8">
             <Image
-              alt="poster"
-              src="/poster-small.png"
-              width={100}
-              height={60}
               priority={true}
+              alt="logo"
+              src={logo}
+              width={50}
+              height={50}
+              className="w-auto h-auto"
             />
+          </div>
+          <a href="https://www.wrenchworks.tech" className="p-2">
+            <span className="">WrenchWorks</span>
+          </a>
+        </div>
+        <div className="header-list">
+          {options.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              {item.name}
+            </a>
+          ))}
+          {children}
+        </div>
+        <div className="header-sign">
+          <Link
+            href="/sign_in"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Sign In <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
-        <nav className="z-10">
-          <DropDown options={options} />
-        </nav>
-      </header>
-    </>
+        <div className="header-drop">
+          <DropDown options={options}>{children}</DropDown>
+        </div>
+      </nav>
+    </header>
   );
 }
