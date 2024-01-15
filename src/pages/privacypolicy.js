@@ -6,21 +6,15 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Wrench Works - Privacy Policy</title>
-        <meta name="description" content="Wrench Works - Privacy Policy"/>
+        <title>WrenchWorks - Privacy Policy</title>
+        <meta name="description" content="WrenchWorks - Privacy Policy" />
       </Head>
       <div className=" p-5">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
         >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-          />
+          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] background-design" />
         </div>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex flex-row justify-center items-center w-full h-16">
@@ -32,7 +26,7 @@ export default function Privacy() {
         <h1 className="text-3xl pspan">Privacy Policy for WrenchWorks</h1>
         <div className="flex flex-col justify-between">
           <span className="text-xl">
-            <Link href="/">WrenchWorks.tech </Link>
+            <Link href="/">wrenchworks.tech </Link>
             is committed to protecting your privacy.
           </span>
           <span className="text-xl">
@@ -91,7 +85,7 @@ export default function Privacy() {
             </div>
             <div className="flex flex-col justify-center ">
               <span className="text-xl pspan">
-                Use of Personal Information:{" "}
+                Use of Personal Information:
               </span>
               We may use the personal information we collect for the following
               purposes:
@@ -246,8 +240,8 @@ export default function Privacy() {
             <div className="">
               <span className="text-xl pspan">Contact Us: </span>
               If you have any questions or concerns regarding this Privacy
-              Policy, please contact us at{" "}
-              <Link href="/contact_us">wrenchworks.tech</Link>
+              Policy, please contact us at
+              <Link href="/contactus">wrenchworks.tech</Link>
             </div>
             <div className="flex flex-col justify-center ">
               By using our website, you consent to the terms of this Privacy

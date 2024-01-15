@@ -6,7 +6,7 @@ export default function Sign_Up() {
   return (
     <>
       <Head>
-        <title>Sign Up Wrench Works</title>
+        <title>Sign Up - WrenchWorks</title>
         <meta name="description" content="Sign Up on wrenchworks.tech" />
       </Head>
       <form
@@ -375,7 +375,7 @@ export default function Sign_Up() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <Link
-            href="/sign_in"
+            href="/signin"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Cancel

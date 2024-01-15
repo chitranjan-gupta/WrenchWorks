@@ -71,7 +71,7 @@ const Post = ({ post }) => {
         />
         <meta
           name="og:url"
-          content={`https://www.wrenchworks.tech/blog/${router.query.slug}`}
+          content={`https://wrenchworks.tech/blog/${router.query.slug}`}
         />
         <meta name="og:site_name" content="Wrench Works" />
         <meta name="og:locale" content="en_US" />

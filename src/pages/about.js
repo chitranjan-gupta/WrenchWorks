@@ -6,8 +6,8 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>Wrench Works - About Us</title>
-        <meta name="description" content="Wrench Works - About Us" />
+        <title>WrenchWorks - About Us</title>
+        <meta name="description" content="WrenchWorks - About Us" />
       </Head>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
       <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
@@ -17,11 +17,11 @@ export default function About() {
         </div>
         <div className="flex flex-row justify-between items-center w-full h-full">
           <div className="relative w-1/2 h-60">
-            <Image priority={true} src={poster} alt="Poster" fill={true} />
+            <Image priority={true} src={poster} alt="WrenchWorks's Poster" fill={true} />
           </div>
           <div className="flex flex-row justify-center items-center h-full">
             <Link href="/">
-              <strong>Wrench Works</strong>
+              <strong>WrenchWorks</strong>
             </Link>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function About() {
                 <strong>Our Mission</strong>
               </h2>
               <p>
-                At Wrench Works, our mission is to empower car owners and
+                At WrenchWorks, our mission is to empower car owners and
                 enthusiasts with valuable resources to enhance their driving
                 experience. We aim to be the go-to platform for all things
                 related to cars, from researching the latest models to finding
@@ -110,7 +110,7 @@ export default function About() {
                 <strong>Our Commitment to Quality</strong>
               </h2>
               <p>
-                At Wrench Works, we are committed to maintaining the highest
+                At WrenchWorks, we are committed to maintaining the highest
                 standards of quality and accuracy in the information we provide.
                 Our team meticulously researches and verifies all content to
                 ensure that you receive reliable and up-to-date data.
@@ -124,7 +124,7 @@ export default function About() {
                 We love hearing from our users and value your feedback. Whether
                 you have a suggestion, query, or just want to say hello, feel
                 free to get in touch with us through our
-                <Link href="/contact_us"> contact page</Link>. Your feedback
+                <Link href="/contactus"> contact page</Link>. Your feedback
                 helps us improve and serve you better.
               </p>
             </div>

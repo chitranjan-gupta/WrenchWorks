@@ -1,4 +1,4 @@
-const URL = "https://www.wrenchworks.tech";
+const URL = "https://wrenchworks.tech";
 
 export function generateSiteMap(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -19,12 +19,12 @@ export function generateSiteMap(posts) {
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>${URL}/privacy_policy</loc>
+        <loc>${URL}/privacypolicy</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>${URL}/contact_us</loc>
+        <loc>${URL}/contactus</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <priority>0.80</priority>
     </url>
@@ -34,12 +34,12 @@ export function generateSiteMap(posts) {
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>${URL}/sign_in</loc>
+        <loc>${URL}/signin</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>${URL}/sign_up</loc>
+        <loc>${URL}/signup</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
         <priority>0.64</priority>
     </url>

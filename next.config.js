@@ -42,6 +42,21 @@ const nextConfig = {
         destination: '/blog/:slug*',
         permanent: true,
       },
+      {
+        source: '/login',
+        destination: '/signin',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contactus',
+        permanent: true,
+      },
+      {
+        source: '/privacy',
+        destination: '/privacypolicy',
+        permanent: true,
+      }
     ]
   },
 };

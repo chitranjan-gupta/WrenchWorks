@@ -6,32 +6,26 @@ export default function Terms() {
   return (
     <>
       <Head>
-        <title>Wrench Works - Terms of Service</title>
-        <meta name="description" content="Wrench Works - Terms of Service" />
+        <title>WrenchWorks - Terms of Service</title>
+        <meta name="description" content="WrenchWorks - Terms of Service" />
       </Head>
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
       >
-        <div
-          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        />
+        <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] background-design" />
       </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex flex-row justify-center items-center w-full h-16">
           <Link href="/">
-            <Image alt="poster" src={poster} width={200} height={100} />
+            <Image alt="WrenchWorks's poster" src={poster} width={200} height={100} />
           </Link>
         </div>
       </div>
       <div className="flex flex-col justify-between items-start p-3">
-        <span>Wrench Works - Terms of Service</span>
+        <span>WrenchWorks - Terms of Service</span>
         <span>Last Updated: 21st July 2023.</span>
-        <span>Welcome to Wrench Works (&quot;Website&quot;).</span>
+        <span>Welcome to WrenchWorks (&quot;Website&quot;).</span>
         <span>
           Please read these Terms of Service (&quot;Terms&quot;) carefully
           before using the Website or any of its services. By accessing or using
@@ -43,7 +37,7 @@ export default function Terms() {
             <strong>Introduction</strong>
             <br />
             <span>
-              Wrench Works is a platform that provides car information and
+              WrenchWorks is a platform that provides car information and
               servicing details for informational purposes only. The information
               on this Website is not intended as professional advice and should
               not be relied upon as such. We aim to provide accurate and
@@ -57,11 +51,11 @@ export default function Terms() {
             <span>
               All content provided on the Website, including text, graphics,
               images, videos, logos, icons, and any other materials, are the
-              intellectual property of Wrench Works or its respective owners and
+              intellectual property of WrenchWorks or its respective owners and
               are protected by applicable copyright, trademark, and other
               intellectual property laws. You may not modify, reproduce,
               distribute, or use any content from this Website without obtaining
-              prior written permission from Wrench Works or the relevant rights
+              prior written permission from WrenchWorks or the relevant rights
               holder.
             </span>
           </li>
@@ -69,7 +63,7 @@ export default function Terms() {
             <strong>User Conduct</strong>
             <br />
             <span>
-              When using Wrench Works, you agree to abide by the following
+              When using WrenchWorks, you agree to abide by the following
               guidelines:
             </span>
             <ul className=" pl-5">
@@ -100,10 +94,10 @@ export default function Terms() {
             <br />
             <span>
               The Website may contain links to third-party websites or services
-              that are not owned or controlled by Wrench Works. We do not
+              that are not owned or controlled by WrenchWorks. We do not
               endorse or assume responsibility for the content, privacy
               policies, or practices of any third-party websites or services.
-              You acknowledge and agree that Wrench Works shall not be liable,
+              You acknowledge and agree that WrenchWorks shall not be liable,
               directly or indirectly, for any damage or loss caused or alleged
               to be caused by or in connection with the use of any such content,
               goods, or services available on or through any such third-party
@@ -137,7 +131,7 @@ export default function Terms() {
             <strong> Modifications to Terms </strong>
             <br />
             <span>
-              Wrench Works reserves the right to modify or update these Terms at
+              WrenchWorks reserves the right to modify or update these Terms at
               any time without prior notice. It is your responsibility to review
               these Terms periodically for any changes. Your continued use of
               the Website after any modifications to these Terms constitutes
@@ -163,10 +157,10 @@ export default function Terms() {
           </li>
         </div>
         <span>
-          By using Wrench Works, you acknowledge that you have read, understood,
+          By using WrenchWorks, you acknowledge that you have read, understood,
           and agree to be bound by these Terms.
         </span>
-        <span>Thank you for using Wrench Works.</span>
+        <span>Thank you for using WrenchWorks.</span>
       </div>
     </>
   );

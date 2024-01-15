@@ -7,7 +7,7 @@ export default function Common() {
       <meta name="robots" content="index, follow" />
       <meta
         name="keywords"
-        content="Car, Car Blogs, Engine, Wrench, Works, Wrench Works, WrenchWorks, wrenchworks.tech"
+        content="Automobile, Automobile Blogs, Engineering, Wrench, Works, Wrench Works, WrenchWorks, wrenchworks.tech, www.wrenchworks.tech"
       />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content="English" />

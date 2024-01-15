@@ -5,6 +5,7 @@ import instagram from "@/img/wrenchworks-instagram.png";
 import facebook from "@/img/wrenchworks-facebook.png";
 import twitter from "@/img/wrenchworks-twitter.png";
 import threads from "@/img/wrenchworks-threads.png";
+import youtube from "@/img/wrenchworks-youtube.png";
 
 import ford from "@/img/ford.webp";
 import honda from "@/img/honda.jpg";
@@ -92,5 +93,6 @@ export {
   facebook,
   twitter,
   threads,
+  youtube,
   brandsLogos,
 };

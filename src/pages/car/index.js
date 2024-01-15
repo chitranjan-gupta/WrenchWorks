@@ -136,7 +136,7 @@ export default function Index({ brands }) {
                     <div>
                       <Image
                         src={logo}
-                        alt=""
+                        alt={""}
                         fill={true}
                         className="object-cover object-center"
                         sizes="280w"

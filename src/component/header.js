@@ -85,7 +85,7 @@ export default function Header({ children, className = "", options = [] }) {
               className="w-auto h-auto"
             />
           </div>
-          <a href="https://www.wrenchworks.tech" className="p-2">
+          <a href="https://wrenchworks.tech" className="p-2">
             <span className="">WrenchWorks</span>
           </a>
         </div>
@@ -103,7 +103,7 @@ export default function Header({ children, className = "", options = [] }) {
         </div>
         <div className="header-sign">
           <Link
-            href="/sign_in"
+            href="/signin"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Sign In <span aria-hidden="true">&rarr;</span>

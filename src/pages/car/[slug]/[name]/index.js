@@ -29,7 +29,7 @@ export default function Index({ car }) {
     return (
       <>
         <Head>
-          <title>Wrench Works</title>
+          <title>WrenchWorks</title>
         </Head>
         <div className="flex flex-row justify-center items-center w-full h-full text-violet-700">
           <span className=" text-9xl">404 | Not Found</span>

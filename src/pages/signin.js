@@ -6,7 +6,7 @@ export default function Sign_In() {
   return (
     <>
       <Head>
-        <title>Sign In Wrench Works</title>
+        <title>Sign In - WrenchWorks</title>
         <meta name="description" content="Sign In on wrenchworks.tech" />
       </Head>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -84,7 +84,7 @@ export default function Sign_In() {
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?
             <Link
-              href="/sign_up"
+              href="/signup"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Sign Up Now

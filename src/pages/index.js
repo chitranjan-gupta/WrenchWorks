@@ -15,6 +15,7 @@ import {
   threads,
   twitter,
   facebook,
+  youtube,
   brandsLogos,
 } from "@/img/imgexport";
 import { BoltIcon } from "@heroicons/react/20/solid";
@@ -163,13 +164,7 @@ export default function Main({ posts, cars }) {
               className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
               aria-hidden="true"
             >
-              <div
-                className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                style={{
-                  clipPath:
-                    "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-                }}
-              />
+              <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] background-design" />
             </div>
             <Header options={navigation}>
               <a
@@ -222,7 +217,7 @@ export default function Main({ posts, cars }) {
                           key={index}
                           className="relative h-12 w-40 bg-transparent"
                         >
-                          <a href={logos[1]} target="_blank">
+                          <a href={logos[1]} target="_blank" rel="nofollow">
                             <Image
                               className="object-contain bg-transparent w-auto h-auto"
                               src={logos[0]}
@@ -256,13 +251,7 @@ export default function Main({ posts, cars }) {
               className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
               aria-hidden="true"
             >
-              <div
-                className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                style={{
-                  clipPath:
-                    "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-                }}
-              />
+              <div className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem] background-design" />
             </div>
           </div>
         </div>
@@ -509,7 +498,7 @@ export default function Main({ posts, cars }) {
                       src={person.imageUrl}
                       alt={person.name}
                     />
-                    <a href={person.url}>
+                    <a href={person.url} rel="nofollow">
                       <div>
                         <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
                           {person.name}
@@ -641,13 +630,7 @@ export default function Main({ posts, cars }) {
             className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6"
             aria-hidden="true"
           >
-            <div
-              className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-              style={{
-                clipPath:
-                  "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-              }}
-            />
+            <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 background-design" />
           </div>
         </div>
       </section>
@@ -656,7 +639,7 @@ export default function Main({ posts, cars }) {
           <div className="w-full flex flex-col justify-between items-start md:flex-row">
             <div className="md:w-1/4">
               <div className="h-16 w-30 mb-10 md:mb-0">
-                <a href="https://www.wrenchworks.tech">
+                <a href="https://wrenchworks.tech" target="_blank">
                   <Image
                     alt="poster"
                     src={poster}
@@ -673,6 +656,7 @@ export default function Main({ posts, cars }) {
                   target="_blank"
                   className="flex flex-row items-center"
                   href="https://instagram.com/wrenchworks_"
+                  rel="nofollow"
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image
@@ -690,6 +674,7 @@ export default function Main({ posts, cars }) {
                   target="_blank"
                   className="flex flex-row items-center"
                   href="https://www.threads.net/@wrenchworks_"
+                  rel="nofollow"
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image src={threads} alt="Threads" width={20} height={20} />
@@ -701,10 +686,11 @@ export default function Main({ posts, cars }) {
                 <Link
                   target="_blank"
                   className="flex flex-row items-center"
-                  href="https://twitter.com/@wrenchworks_"
+                  href="https://x.com/@wrenchworks_"
+                  rel="nofollow"
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
-                    <Image src={twitter} alt="Twitter" width={20} height={20} />
+                    <Image src={twitter} alt="X" width={20} height={20} />
                   </div>
                   <span className="ml-2">x.com/@wrenchworks_</span>
                 </Link>
@@ -713,8 +699,22 @@ export default function Main({ posts, cars }) {
                 <Link
                   target="_blank"
                   className="flex flex-row items-center"
+                  href="https://youtube.com/@WrenchWorks_"
+                  rel="nofollow"
+                >
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
+                    <Image src={youtube} alt="Youtube" width={20} height={20} />
+                  </div>
+                  <span className="ml-2">youtube.com/@WrenchWorks_</span>
+                </Link>
+              </li>
+              <li className="flex">
+                <Link
+                  target="_blank"
+                  className="flex flex-row items-center"
                   href="https://www.facebook.com/profile.php?id=100094893294335"
                   data-href="https://www.facebook.com/profile.php?id=100095089629691"
+                  rel="nofollow"
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image
@@ -736,14 +736,14 @@ export default function Main({ posts, cars }) {
               </li>
               <li>
                 <Link
-                  href="/privacy_policy"
+                  href="/privacypolicy"
                   className="mr-4 hover:underline md:mr-6"
                 >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contact_us" className="hover:underline">
+                <Link href="/contactus" className="hover:underline">
                   Contact
                 </Link>
               </li>
@@ -762,7 +762,7 @@ export default function Main({ posts, cars }) {
           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <span className="block text-sm sm:text-center">
             <a href="https://wrenchworks.tech/" className="hover:underline">
-              © 2023 WrenchWorks™
+              © 2024 WrenchWorks™
             </a>
           </span>
         </div>
