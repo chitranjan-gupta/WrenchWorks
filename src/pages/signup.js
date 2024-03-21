@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import poster from "../../public/poster-small.png";
+import { posterSmall } from "@/img";
 export default function Sign_Up() {
   return (
     <>
@@ -16,7 +16,7 @@ export default function Sign_Up() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex flex-row justify-center items-center w-full h-16">
             <Link href="/">
-              <Image alt="poster" src={poster} width={200} height={100} />
+              <Image alt="poster" src={posterSmall} width={200} height={100} />
             </Link>
           </div>
           <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

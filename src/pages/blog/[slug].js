@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import groq from "groq";
 import { PortableText } from "@portabletext/react";
 import { client, urlFor } from "@/lib/sanity";
-import poster from "../../../public/poster-small.png";
+import { posterSmall } from "@/img";
 import Header from "@/component/header";
 import { navigation } from "@/lib/nav";
 
@@ -62,7 +62,7 @@ const Post = ({ post }) => {
         <meta name="og:description" content={description} />
         <meta
           name="og:image"
-          content={post.mainImage ? urlFor(post.mainImage).url() : poster}
+          content={post.mainImage ? urlFor(post.mainImage).url() : posterSmall}
         />
         <meta
           name="og:url"
@@ -111,7 +111,7 @@ const Post = ({ post }) => {
           </div>
           <div className="relative w-full h-96 object-contain">
             <Image
-              src={post.mainImage ? urlFor(post.mainImage).url() : poster}
+              src={post.mainImage ? urlFor(post.mainImage).url() : posterSmall}
               alt="mainImage"
               fill={true}
               sizes="100w"

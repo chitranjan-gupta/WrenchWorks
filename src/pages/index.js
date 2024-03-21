@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import groq from "groq";
@@ -6,8 +6,8 @@ import { client, urlFor } from "@/lib/sanity";
 import Meta from "@/component/meta";
 import Header from "@/component/header";
 import { navigation } from "@/lib/nav";
-import poster from "../../public/poster-small.png";
 import {
+  posterSmall,
   car,
   logo,
   piping,
@@ -17,7 +17,7 @@ import {
   facebook,
   youtube,
   brandsLogos,
-} from "@/img/imgexport";
+} from "@/img";
 import { BoltIcon } from "@heroicons/react/20/solid";
 
 export default function Main({ posts, cars }) {
@@ -642,7 +642,7 @@ export default function Main({ posts, cars }) {
                 <a href="https://wrenchworks.tech" target="_blank">
                   <Image
                     alt="poster"
-                    src={poster}
+                    src={posterSmall}
                     width={200}
                     height={100}
                     className="w-auto h-auto"

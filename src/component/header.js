@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { logo } from "@/img/imgexport";
+import { logo } from "@/img";
 import { Menu, Transition } from "@headlessui/react";
 import { Bars3BottomRightIcon } from "@heroicons/react/20/solid";
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import groq from "groq";
 import { client } from "@/lib/sanity";
-import { logo, brandsLogos } from "@/img/imgexport";
+import { logo, brandsLogos } from "@/img";
 import ComboBox from "@/component/comboBox";
 import { RadioGroup } from "@headlessui/react";
 import Header from "@/component/header";

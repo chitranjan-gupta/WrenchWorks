@@ -1,8 +1,8 @@
-import "@/styles/globals.css";
-import Common from "@/component/common";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { useEffect } from "react";
+import "@/styles/globals.css";
+import Common from "@/component/common";
 import * as gtag from "@/lib/gtag";
 
 const App = ({ Component, pageProps }) => {
@@ -19,9 +19,8 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Common />
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Script id="gtag" strategy="afterInteractive">
+        {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -29,10 +28,8 @@ const App = ({ Component, pageProps }) => {
         gtag('config', '${gtag.GA_TRACKING_ID}', {
           page_path: window.location.pathname,
         });
-      `,
-        }}
-        id="gtag"
-      />
+      `}
+      </Script>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
         id="gtagafter"

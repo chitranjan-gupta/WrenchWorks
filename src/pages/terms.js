@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import poster from "../../public/poster-small.png";
+import { posterSmall } from "@/img";
 export default function Terms() {
   return (
     <>
@@ -20,7 +20,7 @@ export default function Terms() {
           <Link href="/">
             <Image
               alt="WrenchWorks's poster"
-              src={poster}
+              src={posterSmall}
               width={200}
               height={100}
             />

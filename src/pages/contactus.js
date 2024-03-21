@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import poster from "../../public/poster-small.png";
+import { posterSmall } from "@/img";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -28,7 +28,7 @@ export default function Example() {
             <Link href="/">
               <Image
                 alt="WrenchWorks's poster"
-                src={poster}
+                src={posterSmall}
                 width={200}
                 height={100}
               />

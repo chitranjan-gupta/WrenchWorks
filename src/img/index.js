@@ -1,3 +1,4 @@
+import posterSmall from "@/img/poster-small.png";
 import car from "@/img/car.png";
 import logo from "@/img/logo.png";
 import piping from "@/img/piping.png";
@@ -86,6 +87,7 @@ const brandsLogos = [
 ];
 
 export {
+  posterSmall,
   car,
   logo,
   piping,

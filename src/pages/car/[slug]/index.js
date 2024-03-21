@@ -4,7 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import groq from "groq";
 import { client } from "@/lib/sanity";
-import { logo } from "@/img/imgexport";
+import { logo } from "@/img";
 import ComboBox from "@/component/comboBox";
 import { RadioGroup } from "@headlessui/react";
 import Header from "@/component/header";

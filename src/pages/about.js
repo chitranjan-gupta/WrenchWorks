@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import poster from "../../public/poster-small.png";
+import { posterSmall } from "@/img";
 export default function About() {
   return (
     <>
@@ -19,7 +19,7 @@ export default function About() {
           <div className="relative w-1/2 h-60">
             <Image
               priority={true}
-              src={poster}
+              src={posterSmall}
               alt="WrenchWorks's Poster"
               fill={true}
             />
