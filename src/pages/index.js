@@ -167,12 +167,13 @@ export default function Main({ posts, cars }) {
               <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] background-design" />
             </div>
             <Header options={navigation}>
-              <a
+              <Link
                 href="#features"
                 className="text-sm font-semibold leading-6 text-gray-900"
+                prefetch={false}
               >
                 Features
-              </a>
+              </Link>
             </Header>
             <div className="w-full flex -ml-8 justify-between flex-col sm:flex-row md:flex-row lg:flex-row">
               <div className="">
@@ -196,12 +197,13 @@ export default function Main({ posts, cars }) {
                   about the auto.
                 </p>
                 <div className=" flex items-center justify-center">
-                  <a
+                  <Link
                     href="#cars"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    prefetch={false}
                   >
                     Get started
-                  </a>
+                  </Link>
                 </div>
                 <div className="sm:w-full">
                   <div className="lg:px-8">
@@ -210,14 +212,19 @@ export default function Main({ posts, cars }) {
                     </h2>
                     <div
                       ref={brandsRef}
-                      className={`mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[6.5rem] gap-y-10 pl-14 py-1 lg:pl-0 lg:max-w-3xl lg:grid-cols-13 lg:gap-x-28 lg:grid-rows-3 lg:gap-y-7 scrollbar bg-transparent`}
+                      className="mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[6.5rem] gap-y-10 pl-14 py-1 lg:pl-0 lg:max-w-3xl lg:grid-cols-13 lg:gap-x-28 lg:grid-rows-3 lg:gap-y-7 scrollbar bg-transparent"
                     >
                       {brandsLogos.map((logos, index) => (
                         <div
                           key={index}
                           className="relative h-12 w-40 bg-transparent"
                         >
-                          <a href={logos[1]} target="_blank" rel="nofollow">
+                          <Link
+                            href={encodeURIComponent(logos[1])}
+                            target="_blank"
+                            rel="nofollow"
+                            prefetch={false}
+                          >
                             <Image
                               className="object-contain bg-transparent w-auto h-auto"
                               src={logos[0]}
@@ -225,7 +232,7 @@ export default function Main({ posts, cars }) {
                               width={90}
                               height={90}
                             />
-                          </a>
+                          </Link>
                         </div>
                       ))}
                     </div>
@@ -295,17 +302,10 @@ export default function Main({ posts, cars }) {
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">
               <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-                <h2
-                  className="
-              font-bold
-              text-3xl
-              sm:text-4xl
-              md:text-[40px]
-              text-dark
-              mb-4
-              "
-                >
-                  <Link href="/blog">Our Recent Cars</Link>
+                <h2 className="font-bold text-3xl sm:text-4xl md:text-[40px] text-dark mb-4">
+                  <Link href="/blog" prefetch={false}>
+                    Our Recent Cars
+                  </Link>
                 </h2>
                 <p className="text-base text-body-color">
                   Experience the Extraordinary Journey
@@ -334,10 +334,13 @@ export default function Main({ posts, cars }) {
                 <div className="mt-4 flex flex-col lg:flex-row">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <a href={`/car/${car.brand[0]}/${car.slug.current}`}>
+                      <Link
+                        href={`/car/${encodeURIComponent(car.brand[0])}/${encodeURIComponent(car.slug.current)}`}
+                        prefetch={false}
+                      >
                         <span aria-hidden="true" className="absolute inset-0" />
                         {car.title}
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
                       {car.description}
@@ -365,17 +368,10 @@ export default function Main({ posts, cars }) {
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4">
               <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-                <h2
-                  className="
-              font-bold
-              text-3xl
-              sm:text-4xl
-              md:text-[40px]
-              text-dark
-              mb-4
-              "
-                >
-                  <Link href="/blog">Our Recent Blogs</Link>
+                <h2 className="font-bold text-3xl sm:text-4xl md:text-[40px] text-dark mb-4">
+                  <Link href="/blog" prefetch={false}>
+                    Our Recent Blogs
+                  </Link>
                 </h2>
                 <p className="text-base text-body-color">
                   Insights and Inspiration for Car Enthusiasts
@@ -390,7 +386,7 @@ export default function Main({ posts, cars }) {
             {posts.map((post) => (
               <div key={post._id} className="w-full md:w-1/2 lg:w-1/3 mx-7">
                 <div className="max-w-[370px] min-w-[370px] mx-auto mb-10">
-                  <div className="rounded overflow-hidden mb-8">
+                  <div className="rounded overflow-hidden mb-2 max-h-[250px] min-h-[250px]">
                     {post.mainImage ? (
                       <Image
                         src={urlFor(post.mainImage).url()}
@@ -415,36 +411,31 @@ export default function Main({ posts, cars }) {
                     <div className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                       {post.categories &&
                         post.categories.map((category) => (
-                          <Link href={`/blog/category`} key={category}>
+                          <Link
+                            href={`/blog/category`}
+                            key={category}
+                            prefetch={false}
+                          >
                             {category}
                           </Link>
                         ))}
                     </div>
                   </div>
-                  <div>
+                  <div className="max-h-[85px] min-h-[85px] overflow-hidden overflow-ellipsis">
                     <h3>
-                      <a
+                      <Link
                         href={`/blog/${encodeURIComponent(post.slug.current)}`}
-                        className="
-                    font-semibold
-                    text-xl
-                    sm:text-2xl
-                    lg:text-xl
-                    xl:text-2xl
-                    mb-4
-                    inline-block
-                    text-dark
-                    hover:text-primary
-                    "
+                        className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary"
+                        prefetch={false}
                       >
                         {post.title}
-                      </a>
+                      </Link>
                     </h3>
                     <p className="text-base text-body-color">
                       {post.description}
                     </p>
                   </div>
-                  <div className="relative mt-8 flex items-center gap-x-4">
+                  <div className="relative mt-2 flex items-center gap-x-4">
                     <Image
                       src={urlFor(post.authorImage).url()}
                       alt={`${post.name}'s picture`}
@@ -454,7 +445,7 @@ export default function Main({ posts, cars }) {
                     />
                     <div className="text-sm leading-6">
                       <p className="font-semibold text-gray-900">
-                        <Link href="/blog/author">
+                        <Link href="/blog/author" prefetch={false}>
                           <span className="absolute inset-0" />
                           {post.name}
                         </Link>
@@ -639,7 +630,11 @@ export default function Main({ posts, cars }) {
           <div className="w-full flex flex-col justify-between items-start md:flex-row">
             <div className="md:w-1/4">
               <div className="h-16 w-30 mb-10 md:mb-0">
-                <a href="https://wrenchworks.tech" target="_blank">
+                <Link
+                  href="https://wrenchworks.tech"
+                  target="_blank"
+                  prefetch={false}
+                >
                   <Image
                     alt="poster"
                     src={posterSmall}
@@ -647,7 +642,7 @@ export default function Main({ posts, cars }) {
                     height={100}
                     className="w-auto h-auto"
                   />
-                </a>
+                </Link>
               </div>
             </div>
             <ul className="grid grid-cols-1 grid-rows-4 justify-start gap-y-2 md:w-1/2 md:grid-rows-2 md:grid-cols-2">
@@ -657,6 +652,7 @@ export default function Main({ posts, cars }) {
                   className="flex flex-row items-center"
                   href="https://instagram.com/wrenchworks_"
                   rel="nofollow"
+                  prefetch={false}
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image
@@ -675,6 +671,7 @@ export default function Main({ posts, cars }) {
                   className="flex flex-row items-center"
                   href="https://www.threads.net/@wrenchworks_"
                   rel="nofollow"
+                  prefetch={false}
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image src={threads} alt="Threads" width={20} height={20} />
@@ -688,6 +685,7 @@ export default function Main({ posts, cars }) {
                   className="flex flex-row items-center"
                   href="https://x.com/@wrenchworks_"
                   rel="nofollow"
+                  prefetch={false}
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image src={twitter} alt="X" width={20} height={20} />
@@ -701,6 +699,7 @@ export default function Main({ posts, cars }) {
                   className="flex flex-row items-center"
                   href="https://youtube.com/@WrenchWorks_"
                   rel="nofollow"
+                  prefetch={false}
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image src={youtube} alt="Youtube" width={20} height={20} />
@@ -715,6 +714,7 @@ export default function Main({ posts, cars }) {
                   href="https://www.facebook.com/profile.php?id=100094893294335"
                   data-href="https://www.facebook.com/profile.php?id=100095089629691"
                   rel="nofollow"
+                  prefetch={false}
                 >
                   <div className="rounded-md bg-white/5 p-2 ring-1 ring-black/10">
                     <Image
@@ -730,7 +730,11 @@ export default function Main({ posts, cars }) {
             </ul>
             <ul className="md:w-1/4 flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
               <li>
-                <Link href="/about" className="mr-4 hover:underline md:mr-6 ">
+                <Link
+                  href="/about"
+                  className="mr-4 hover:underline md:mr-6"
+                  prefetch={false}
+                >
                   About
                 </Link>
               </li>
@@ -738,22 +742,35 @@ export default function Main({ posts, cars }) {
                 <Link
                   href="/privacypolicy"
                   className="mr-4 hover:underline md:mr-6"
+                  prefetch={false}
                 >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contactus" className="hover:underline">
+                <Link
+                  href="/contactus"
+                  className="hover:underline"
+                  prefetch={false}
+                >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/disclaimer" className="hover:underline ml-2">
+                <Link
+                  href="/disclaimer"
+                  className="hover:underline ml-2"
+                  prefetch={false}
+                >
                   Disclaimer
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:underline ml-2">
+                <Link
+                  href="/terms"
+                  className="hover:underline ml-2"
+                  prefetch={false}
+                >
                   Terms of Service
                 </Link>
               </li>
@@ -761,9 +778,13 @@ export default function Main({ posts, cars }) {
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
           <span className="block text-sm sm:text-center">
-            <a href="https://wrenchworks.tech/" className="hover:underline">
+            <Link
+              href="https://wrenchworks.tech/"
+              className="hover:underline"
+              prefetch={false}
+            >
               © 2024 WrenchWorks™
-            </a>
+            </Link>
           </span>
         </div>
       </footer>
