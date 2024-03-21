@@ -1,6 +1,6 @@
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify:true,
+  swcMinify: true,
   images: {
     remotePatterns: [
       {
@@ -38,31 +38,31 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/post/:slug*',
-        destination: '/blog/:slug*',
+        source: "/post/:slug*",
+        destination: "/blog/:slug*",
         permanent: true,
       },
       {
-        source: '/login',
-        destination: '/signin',
+        source: "/login",
+        destination: "/signin",
         permanent: true,
       },
       {
-        source: '/contact',
-        destination: '/contactus',
+        source: "/contact",
+        destination: "/contactus",
         permanent: true,
       },
       {
-        source: '/privacy',
-        destination: '/privacypolicy',
+        source: "/privacy",
+        destination: "/privacypolicy",
         permanent: true,
-      }
-    ]
+      },
+    ];
   },
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true"
-})
+  enabled: process.env.ANALYZE === "true",
+});
 
 module.exports = withBundleAnalyzer(nextConfig);

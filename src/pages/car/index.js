@@ -26,7 +26,7 @@ export default function Index({ brands }) {
   }
   return (
     <>
-      <Header options={navigation}/>
+      <Header options={navigation} />
       <div className="absolute bg-white flex flex-col lg:flex-row top-14 -z-10">
         <div className="ml-1">
           <div className="w-80 h-80">
@@ -114,7 +114,7 @@ export default function Index({ brands }) {
                         <h3 className="text-sm text-gray-700 text-center">
                           {brand.title.replace(
                             brand.title[0],
-                            brand.title[0].toUpperCase()
+                            brand.title[0].toUpperCase(),
                           )}
                         </h3>
                       </div>

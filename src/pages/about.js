@@ -17,7 +17,12 @@ export default function About() {
         </div>
         <div className="flex flex-row justify-between items-center w-full h-full">
           <div className="relative w-1/2 h-60">
-            <Image priority={true} src={poster} alt="WrenchWorks's Poster" fill={true} />
+            <Image
+              priority={true}
+              src={poster}
+              alt="WrenchWorks's Poster"
+              fill={true}
+            />
           </div>
           <div className="flex flex-row justify-center items-center h-full">
             <Link href="/">

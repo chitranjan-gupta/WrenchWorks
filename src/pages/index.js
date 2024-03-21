@@ -31,7 +31,7 @@ export default function Main({ posts, cars }) {
       behavior: "smooth",
     });
     setScrollPos((pos) =>
-      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x),
     );
   }
   function rightScroll() {
@@ -44,7 +44,7 @@ export default function Main({ posts, cars }) {
     setScrollPos((pos) =>
       pos + (rect.width - rect.x) > posts.length * 320
         ? pos
-        : pos + (rect.width - rect.x)
+        : pos + (rect.width - rect.x),
     );
   }
   const brandsRef = useRef();
@@ -57,7 +57,7 @@ export default function Main({ posts, cars }) {
       behavior: "smooth",
     });
     setBrandsPos((pos) =>
-      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x),
     );
   }
   function rightBrand() {
@@ -70,7 +70,7 @@ export default function Main({ posts, cars }) {
     setBrandsPos((pos) =>
       pos + (rect.width - rect.x) > (13 * 160) / 2
         ? pos
-        : pos + (rect.width - rect.x)
+        : pos + (rect.width - rect.x),
     );
   }
   const carRef = useRef();
@@ -83,7 +83,7 @@ export default function Main({ posts, cars }) {
       behavior: "smooth",
     });
     setCarPos((pos) =>
-      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x)
+      pos - (rect.width - rect.x) < 0 ? pos : pos - (rect.width - rect.x),
     );
   }
   function rightCar() {
@@ -96,7 +96,7 @@ export default function Main({ posts, cars }) {
     setCarPos((pos) =>
       pos + (rect.width - rect.x) > posts.length * 320
         ? pos
-        : pos + (rect.width - rect.x)
+        : pos + (rect.width - rect.x),
     );
   }
   const features = [

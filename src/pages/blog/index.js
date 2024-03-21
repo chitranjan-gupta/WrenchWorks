@@ -103,9 +103,9 @@ export default function Index({ posts }) {
                     onClick={() =>
                       window.open(
                         `https://wrenchworks.tech/blog/${encodeURIComponent(
-                          slug.current
+                          slug.current,
                         )}`,
-                        "_blank"
+                        "_blank",
                       )
                     }
                   >
@@ -142,7 +142,12 @@ export default function Index({ posts }) {
                         />
                         <div className="text-sm leading-6">
                           <p className="font-semibold text-gray-100">
-                            <Link href="/blog/author" onClick={(event) => event.stopPropagation()}>{name}</Link>
+                            <Link
+                              href="/blog/author"
+                              onClick={(event) => event.stopPropagation()}
+                            >
+                              {name}
+                            </Link>
                           </p>
                         </div>
                       </div>
@@ -157,7 +162,7 @@ export default function Index({ posts }) {
                       </Link>
                     </div>
                   </div>
-                )
+                ),
               )}
         </div>
       </div>

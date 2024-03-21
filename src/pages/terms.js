@@ -18,7 +18,12 @@ export default function Terms() {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="flex flex-row justify-center items-center w-full h-16">
           <Link href="/">
-            <Image alt="WrenchWorks's poster" src={poster} width={200} height={100} />
+            <Image
+              alt="WrenchWorks's poster"
+              src={poster}
+              width={200}
+              height={100}
+            />
           </Link>
         </div>
       </div>
@@ -94,14 +99,14 @@ export default function Terms() {
             <br />
             <span>
               The Website may contain links to third-party websites or services
-              that are not owned or controlled by WrenchWorks. We do not
-              endorse or assume responsibility for the content, privacy
-              policies, or practices of any third-party websites or services.
-              You acknowledge and agree that WrenchWorks shall not be liable,
-              directly or indirectly, for any damage or loss caused or alleged
-              to be caused by or in connection with the use of any such content,
-              goods, or services available on or through any such third-party
-              websites or services.
+              that are not owned or controlled by WrenchWorks. We do not endorse
+              or assume responsibility for the content, privacy policies, or
+              practices of any third-party websites or services. You acknowledge
+              and agree that WrenchWorks shall not be liable, directly or
+              indirectly, for any damage or loss caused or alleged to be caused
+              by or in connection with the use of any such content, goods, or
+              services available on or through any such third-party websites or
+              services.
             </span>
           </li>
           <li className="list-decimal">

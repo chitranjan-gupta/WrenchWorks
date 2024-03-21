@@ -1,13 +1,15 @@
 {
   "name": "wrenchworks",
   "version": "1.0.0",
-  "license":"MIT",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -29,7 +31,9 @@
     "@tailwindcss/typography": "^0.5.10",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
+    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8.4.29",
+    "prettier": "3.2.5",
     "sharp": "^0.32.5"
   }
 }

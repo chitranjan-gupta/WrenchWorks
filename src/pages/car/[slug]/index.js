@@ -29,7 +29,7 @@ export default function Index({ models }) {
       <Head>
         <title>Cars</title>
       </Head>
-      <Header options={navigation}/>
+      <Header options={navigation} />
       <div className="absolute bg-white flex flex-col lg:flex-row top-14 -z-10">
         <div className="flex flex-row justify-center items-center lg:block lg:ml-8">
           <div className="w-80 h-80">
@@ -93,7 +93,7 @@ export default function Index({ models }) {
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             {router.query.slug.replace(
               router.query.slug[0],
-              router.query.slug[0].toUpperCase()
+              router.query.slug[0].toUpperCase(),
             )}{" "}
             Cars
           </h2>

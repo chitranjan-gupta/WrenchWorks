@@ -16,12 +16,7 @@ const ptComponents = {
       }
       return (
         <div className="relative w-full h-96 object-contain">
-          <Image
-            alt=""
-            loading="lazy"
-            src={urlFor(value).url()}
-            fill={true}
-          />
+          <Image alt="" loading="lazy" src={urlFor(value).url()} fill={true} />
         </div>
       );
     },
@@ -77,7 +72,7 @@ const Post = ({ post }) => {
         <meta name="og:locale" content="en_US" />
         <meta name="og:type" content="article" />
       </Head>
-      <Header options={navigation}/>
+      <Header options={navigation} />
       <div className="flex flex-row justify-center items-center p-2 sm:px-0 mt-10">
         <article className="prose prose-stone lg:prose-xl bg-white">
           <h1 className="">{title}</h1>
@@ -155,7 +150,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const paths = await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)][].slug.current`
+    groq`*[_type == "post" && defined(slug.current)][].slug.current`,
   );
 
   return {

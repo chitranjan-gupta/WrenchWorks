@@ -24,7 +24,7 @@ function list(arr1, arr2) {
       <Fragment key={i + "Frag"} />
     ) : (
       <List key={val} property={val} value={arr2[i]} />
-    )
+    ),
   );
 }
 
@@ -32,7 +32,7 @@ export default function Index({ car, vari }) {
   const router = useRouter();
   const [isAndy, setAndy] = useState(false);
   const [selectedColor, setSelectedColor] = useState(
-    NoU(car) ? car.colours[0] : []
+    NoU(car) ? car.colours[0] : [],
   );
   const [brands, setBrands] = useState(NoU(car) ? car.brands[0] : "");
   const [carSlug, setCarSlug] = useState(NoU(car) ? car.slug.current : "");
@@ -191,7 +191,7 @@ export default function Index({ car, vari }) {
                           reviews.average > rating
                             ? "text-gray-900"
                             : "text-gray-200",
-                          "h-5 w-5 flex-shrink-0"
+                          "h-5 w-5 flex-shrink-0",
                         )}
                         aria-hidden="true"
                       />
@@ -229,7 +229,7 @@ export default function Index({ car, vari }) {
                             classNames(
                               active && checked ? "ring ring-offset-1" : "",
                               !active && checked ? "ring-2" : "",
-                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none",
                             )
                           }
                         >
@@ -237,7 +237,7 @@ export default function Index({ car, vari }) {
                             aria-hidden="true"
                             style={{ backgroundColor: `${color.colourvalue}` }}
                             className={classNames(
-                              "h-8 w-8 rounded-full border border-black border-opacity-10"
+                              "h-8 w-8 rounded-full border border-black border-opacity-10",
                             )}
                           />
                           <RadioGroup.Label as="span" className="sr-only">
@@ -280,7 +280,7 @@ export default function Index({ car, vari }) {
                     <span className="font-bold">
                       {specs._type.replace(
                         specs._type[0],
-                        specs._type[0].toUpperCase()
+                        specs._type[0].toUpperCase(),
                       )}
                     </span>
                     <ul key={index + "Unorder"}>
@@ -300,12 +300,12 @@ export default function Index({ car, vari }) {
                     />
                     {list(
                       [...Object.keys(vari.prices)],
-                      [...Object.values(vari.prices)]
+                      [...Object.values(vari.prices)],
                     )}
                     <List
                       property={`on_road_price_in_${vari.prices.title.replaceAll(
                         " ",
-                        "_"
+                        "_",
                       )}`}
                       value={vari.prices.on_road_price}
                       className="border-t border-gray-400"
@@ -353,10 +353,10 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const brands = await client.fetch(groq`*[_type == "brand"][].title`);
   const models = await client.fetch(
-    groq`*[_type == "car" && defined(slug.current)][].slug.current`
+    groq`*[_type == "car" && defined(slug.current)][].slug.current`,
   );
   const variants = await client.fetch(
-    groq`*[_type == "carvariant" && defined(slug.current)][].slug.current`
+    groq`*[_type == "carvariant" && defined(slug.current)][].slug.current`,
   );
   const paths = [];
   brands.forEach((slug) => {

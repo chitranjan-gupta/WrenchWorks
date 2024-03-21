@@ -18,8 +18,12 @@ function classNames(...classes) {
 export default function Index({ car }) {
   const router = useRouter();
   const [isAndy, setAndy] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(NoU(car) ? car.colours[0] : []);
-  const [breads, setBreads] = useState([{ name: NoU(car) ? car.brands[0] : "" }]);
+  const [selectedColor, setSelectedColor] = useState(
+    NoU(car) ? car.colours[0] : [],
+  );
+  const [breads, setBreads] = useState([
+    { name: NoU(car) ? car.brands[0] : "" },
+  ]);
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (navigator.userAgent.indexOf("Android") > 0) setAndy(true);
@@ -170,7 +174,7 @@ export default function Index({ car }) {
                           reviews.average > rating
                             ? "text-gray-900"
                             : "text-gray-200",
-                          "h-5 w-5 flex-shrink-0"
+                          "h-5 w-5 flex-shrink-0",
                         )}
                         aria-hidden="true"
                       />
@@ -208,7 +212,7 @@ export default function Index({ car }) {
                             classNames(
                               active && checked ? "ring ring-offset-1" : "",
                               !active && checked ? "ring-2" : "",
-                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none",
                             )
                           }
                         >
@@ -216,7 +220,7 @@ export default function Index({ car }) {
                             aria-hidden="true"
                             style={{ backgroundColor: `${color.colourvalue}` }}
                             className={classNames(
-                              "h-8 w-8 rounded-full border border-black border-opacity-10"
+                              "h-8 w-8 rounded-full border border-black border-opacity-10",
                             )}
                           />
                           <RadioGroup.Label as="span" className="sr-only">
@@ -308,7 +312,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const brands = await client.fetch(groq`*[_type == "brand"][].title`);
   const models = await client.fetch(
-    groq`*[_type == "car" && defined(slug.current)][].slug.current`
+    groq`*[_type == "car" && defined(slug.current)][].slug.current`,
   );
   const paths = [];
   brands.forEach((slug) => {

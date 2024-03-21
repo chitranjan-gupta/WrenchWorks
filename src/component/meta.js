@@ -8,10 +8,7 @@ export default function Meta() {
         name="description"
         content="Discover detailed information about the latest automobile, car models and their standout features."
       />
-      <meta
-        name="image"
-        content="https://wrenchworks.tech/poster-small.png"
-      />
+      <meta name="image" content="https://wrenchworks.tech/poster-small.png" />
       <meta itemProp="name" content="WrenchWorks" />
       <meta
         itemProp="description"
@@ -41,7 +38,7 @@ export default function Meta() {
       <meta name="og:site_name" content="WrenchWorks" />
       <meta name="og:locale" content="en_US" />
       <meta name="og:type" content="website" />
-      <link rel="canonical" href="https://www.wrenchworks.tech"/>
+      <link rel="canonical" href="https://www.wrenchworks.tech" />
       <link rel="alternate" href="https://wrenchworks.tech" hreflang="en" />
     </Head>
   );
