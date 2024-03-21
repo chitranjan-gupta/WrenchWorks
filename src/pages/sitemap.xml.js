@@ -8,7 +8,8 @@ export async function getServerSideProps({ res }) {
   const posts = await client.fetch(groq`
     *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
       _id,
-      slug
+      slug,
+      "lastModified": _updatedAt
     }
   `);
   // We generate the XML sitemap with the posts data

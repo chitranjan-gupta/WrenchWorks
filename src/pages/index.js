@@ -386,21 +386,22 @@ export default function Main({ posts, cars }) {
             {posts.map((post) => (
               <div key={post._id} className="w-full md:w-1/2 lg:w-1/3 mx-7">
                 <div className="max-w-[370px] min-w-[370px] mx-auto mb-10">
-                  <div className="rounded overflow-hidden mb-2 max-h-[250px] min-h-[250px]">
+                  <div className="rounded overflow-hidden mb-2 h-[250px] max-h-[250px] min-h-[250px]">
                     {post.mainImage ? (
                       <Image
                         src={urlFor(post.mainImage).url()}
                         alt="mainImage"
-                        width={200}
-                        height={200}
-                        className="w-full"
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <Image
                         src={logo}
                         alt="mainImage"
-                        width={200}
-                        height={200}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover"
                       />
                     )}
                   </div>
@@ -421,11 +422,11 @@ export default function Main({ posts, cars }) {
                         ))}
                     </div>
                   </div>
-                  <div className="max-h-[85px] min-h-[85px] overflow-hidden overflow-ellipsis">
+                  <div className="max-h-[90px] min-h-[90px] overflow-hidden">
                     <h3>
                       <Link
                         href={`/blog/${encodeURIComponent(post.slug.current)}`}
-                        className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary"
+                        className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-2 inline-block text-dark hover:text-primary overflow-ellipsis"
                         prefetch={false}
                       >
                         {post.title}
@@ -794,7 +795,7 @@ export default function Main({ posts, cars }) {
 
 export async function getStaticProps() {
   const posts = await client.fetch(groq`
-      *[_type == "post" && publishedAt < now()] | order(publishedAt desc){
+      *[_type == "post" && publishedAt < now()][0...10] | order(publishedAt desc){
         _id,
         title,
         description,
@@ -807,7 +808,7 @@ export async function getStaticProps() {
       }
     `);
   const cars = await client.fetch(groq`
-    *[_type == "car"]{
+    *[_type == "car"][0...10]{
       _id,
       title,
       description,

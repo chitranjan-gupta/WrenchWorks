@@ -39,7 +39,7 @@ export default function Meta() {
       <meta name="og:locale" content="en_US" />
       <meta name="og:type" content="website" />
       <link rel="canonical" href="https://www.wrenchworks.tech" />
-      <link rel="alternate" href="https://wrenchworks.tech" hreflang="en" />
+      <link rel="alternate" href="https://wrenchworks.tech" hrefLang="en" />
     </Head>
   );
 }
