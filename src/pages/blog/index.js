@@ -92,7 +92,7 @@ export default function Index({ posts }) {
                 }) => (
                   <div
                     key={_id}
-                    className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 dark:bg-gray-500"
+                    className="relative flex items-end justify-start w-full text-left bg-center bg-cover h-96 bg-gray-500"
                     style={{
                       backgroundImage: `url("${
                         mainImage
@@ -109,7 +109,7 @@ export default function Index({ posts }) {
                       )
                     }
                   >
-                    <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b dark:via-transparent dark:from-gray-900 dark:to-gray-900"></div>
+                    <div className="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b via-transparent from-gray-900 to-gray-900"></div>
                     <div className="absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3">
                       <a
                         rel="noopener noreferrer"
