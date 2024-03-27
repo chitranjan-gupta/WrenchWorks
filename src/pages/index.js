@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import groq from "groq";
+import { BoltIcon } from "@heroicons/react/20/solid";
 import { client, urlFor } from "@/lib/sanity";
 import Meta from "@/component/meta";
 import Header from "@/component/header";
@@ -18,7 +19,6 @@ import {
   youtube,
   brandsLogos,
 } from "@/img";
-import { BoltIcon } from "@heroicons/react/20/solid";
 
 export default function Main({ posts, cars }) {
   const blogRef = useRef();
@@ -212,7 +212,7 @@ export default function Main({ posts, cars }) {
                     </h2>
                     <div
                       ref={brandsRef}
-                      className="mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[6.5rem] gap-y-10 pl-14 py-1 lg:pl-0 lg:max-w-3xl lg:grid-cols-13 lg:gap-x-28 lg:grid-rows-3 lg:gap-y-7 scrollbar bg-transparent"
+                      className="mt-10 overflow-x-scroll overflow-y-hidden grid max-w-sm grid-cols-13 grid-rows-3 gap-x-[9rem] gap-y-12 pl-15 py-10 lg:pl-0 lg:max-w-3xl lg:grid-cols-13 lg:gap-x-28 lg:grid-rows-3 lg:gap-y-7 scrollbar bg-transparent"
                     >
                       {brandsLogos.map((logos, index) => (
                         <div

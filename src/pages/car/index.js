@@ -1,31 +1,27 @@
 import { useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 import groq from "groq";
+import Link from "next/link";
+import { RadioGroup } from "@headlessui/react";
 import { client } from "@/lib/sanity";
 import { logo, brandsLogos } from "@/img";
 import ComboBox from "@/component/comboBox";
-import { RadioGroup } from "@headlessui/react";
 import Header from "@/component/header";
 import { navigation } from "@/lib/nav";
-export default function Index({ brands }) {
+import { titleCase } from "@/lib/utils";
+
+export default function Index({ brands, cars }) {
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("brand");
-  const products = [
-    {
-      id: 1,
-      name: "Mahindra Thar",
-      href: "#",
-      imageSrc: "",
-      imageAlt: "Thar",
-      price: "",
-      color: "Black",
-    },
-  ];
+  const [type, setType] = useState("brand"); //store view type
   function getLogo(name) {
     return brandsLogos.find((img) => img[0].src.includes(name))[0];
   }
   return (
     <>
+      <Head>
+        <title>Cars - Wrenchworks</title>
+      </Head>
       <Header options={navigation} />
       <div className="absolute bg-white flex flex-col lg:flex-row top-14 -z-10">
         <div className="ml-1">
@@ -111,11 +107,8 @@ export default function Index({ brands }) {
                     </div>
                     <div className="mt-2 flex justify-between items-center">
                       <div>
-                        <h3 className="text-sm text-gray-700 text-center">
-                          {brand.title.replace(
-                            brand.title[0],
-                            brand.title[0].toUpperCase(),
-                          )}
+                        <h3 className="text-md text-gray-700 text-center">
+                          {titleCase(brand.title)}
                         </h3>
                       </div>
                     </div>
@@ -130,36 +123,36 @@ export default function Index({ brands }) {
             </h2>
 
             <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-              {products.map((product) => (
-                <div key={product.id} className="group relative">
+              {cars.map((car) => (
+                <div key={car._id} className="group relative">
                   <div className="aspect-h-3 aspect-w-3 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
                     <div>
-                      <Image
-                        src={logo}
-                        alt={""}
+                      {car.mainImage && car.mainImage.imageurl ? <Image
+                        src={car.mainImage.imageurl}
+                        alt={car.mainImage.imageurl}
                         fill={true}
                         className="object-cover object-center"
                         sizes="280w"
-                      />
+                      /> : <></>}
                     </div>
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <a href={product.href}>
+                        <Link href={`/car/${car.brands[0].trim().toLowerCase()}/${car.slug.current.trim().toLowerCase()}`} prefetch={false}>
                           <span
                             aria-hidden="true"
                             className="absolute inset-0"
                           />
-                          {product.name}
-                        </a>
+                          {car.title}
+                        </Link>
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">
-                        {product.color}
+
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
-                      {product.price}
+                      {car.price}
                     </p>
                   </div>
                 </div>
@@ -173,6 +166,14 @@ export default function Index({ brands }) {
 }
 
 export async function getServerSideProps() {
+  const cars = await client.fetch(groq`*[_type == "car"]{
+    _id,
+    title,
+    price,
+    "brands":brands[]->title,
+    slug,
+    "mainImage":images[0]
+  }`);
   const brands = await client.fetch(groq`
     *[_type == "brand"]{
       _id,
@@ -182,6 +183,7 @@ export async function getServerSideProps() {
   return {
     props: {
       brands,
+      cars
     },
   };
 }
