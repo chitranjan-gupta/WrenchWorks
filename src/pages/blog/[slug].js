@@ -16,7 +16,7 @@ const ptComponents = {
         return null;
       }
       return (
-        <div className="relative w-full h-96 object-contain">
+        <div className="relative w-full h-96 object-contain my-10">
           <Image alt="" loading="lazy" src={urlFor(value).url()} fill={true} />
         </div>
       );
@@ -86,7 +86,7 @@ const Post = ({ post, posts }) => {
         <meta name="og:type" content="article" />
       </Head>
       <Header options={navigation} />
-      <div className="flex flex-row justify-center items-center p-2 sm:px-0 mt-10">
+      <div className="flex flex-row justify-center items-center p-2 sm:px-0 mt-14">
         <article className="prose prose-stone lg:prose-xl bg-white">
           <h1 className="">{title}</h1>
           <h4 className="text-slate-600">{description}</h4>
@@ -130,7 +130,7 @@ const Post = ({ post, posts }) => {
               sizes="100w"
             />
           </div>
-          <div className="w-full pt-3">
+          <div className="w-full mt-10">
             <PortableText value={body} components={ptComponents} />
           </div>
         </article>
@@ -207,7 +207,7 @@ const Post = ({ post, posts }) => {
                   <div className="max-h-[85px] min-h-[85px] overflow-hidden overflow-ellipsis">
                     <h3>
                       <Link
-                        href={`/blog/${encodeURIComponent(post.slug.current)}`}
+                        href={`/blog/${encodeURIComponent(post.slug.current.trim())}`}
                         className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-1 inline-block text-dark hover:text-primary"
                         prefetch={false}
                       >
@@ -263,7 +263,7 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const post = await client.fetch(query, { slug });
   let posts = [];
-  if (post && post.authorSlug && post.authorSlug.current) {
+  if (post && post.authorSlug && post.authorSlug.current.trim()) {
     posts = await client.fetch(
       groq`
     *[_type == "post" && author->slug.current == $authorSlug][0...4] | order(publishedAt desc){
@@ -278,7 +278,7 @@ export async function getStaticProps(context) {
       mainImage
     }
   `,
-      { authorSlug: post.authorSlug.current },
+      { authorSlug: post.authorSlug.current.trim() },
     );
   }
   return {
@@ -296,7 +296,7 @@ export async function getStaticPaths() {
   );
 
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug) => ({ params: { slug: slug.trim() } })),
     fallback: true,
   };
 }

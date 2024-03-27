@@ -220,7 +220,7 @@ export default function Main({ posts, cars }) {
                           className="relative h-12 w-40 bg-transparent"
                         >
                           <Link
-                            href={encodeURIComponent(logos[1])}
+                            href={logos[1]}
                             target="_blank"
                             rel="nofollow"
                             prefetch={false}
