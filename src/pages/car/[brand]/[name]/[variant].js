@@ -21,9 +21,9 @@ function classNames(...classes) {
 function list(arr1, arr2) {
   return arr1.map((val, i) =>
     val.startsWith("_") ||
-      val.startsWith("ex_showroom_price") ||
-      val.startsWith("on_road_price") ||
-      val.startsWith("title") ? (
+    val.startsWith("ex_showroom_price") ||
+    val.startsWith("on_road_price") ||
+    val.startsWith("title") ? (
       <Fragment key={i + "Frag"} />
     ) : (
       <List key={val} property={val} value={arr2[i]} />
@@ -158,16 +158,20 @@ export default function Index({ car, vari }) {
                   </div>
                 </li>
               ))}
-              {vari.slug.current ? <li className="text-sm">
-                <Link
-                  href="#"
-                  aria-current="page"
-                  className="font-medium text-gray-500 hover:text-gray-600"
-                  prefetch={false}
-                >
-                  {vari.slug.current}
-                </Link>
-              </li> : <></>}
+              {vari.slug.current ? (
+                <li className="text-sm">
+                  <Link
+                    href="#"
+                    aria-current="page"
+                    className="font-medium text-gray-500 hover:text-gray-600"
+                    prefetch={false}
+                  >
+                    {vari.slug.current}
+                  </Link>
+                </li>
+              ) : (
+                <></>
+              )}
             </ol>
           </nav>
 

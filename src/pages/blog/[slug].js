@@ -21,6 +21,13 @@ const ptComponents = {
         </div>
       );
     },
+    table: ({ value }) => {
+      if (!value) {
+        return null;
+      }
+      const { rows } = value;
+      return <Table rows={rows} />;
+    },
   },
   block: {
     h1: ({ children }) => <h1 className="">{children}</h1>,

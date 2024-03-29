@@ -137,7 +137,10 @@ export default function Index({ models }) {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <Link href={`${model.brands[0].trim().toLowerCase()}/${model.slug.current.trim().toLowerCase()}`} prefetch={false}>
+                        <Link
+                          href={`${model.brands[0].trim().toLowerCase()}/${model.slug.current.trim().toLowerCase()}`}
+                          prefetch={false}
+                        >
                           <span
                             aria-hidden="true"
                             className="absolute inset-0"

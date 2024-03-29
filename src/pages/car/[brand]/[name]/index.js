@@ -366,7 +366,7 @@ export async function getStaticProps(context) {
   const { name = "", brand = "" } = context.params;
   let car = await client.fetch(query, { name });
   const variants = await client.fetch(variantquery, { name });
-  car.variants = variants
+  car.variants = variants;
   return {
     props: {
       car,

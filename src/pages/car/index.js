@@ -127,19 +127,26 @@ export default function Index({ brands, cars }) {
                 <div key={car._id} className="group relative">
                   <div className="aspect-h-3 aspect-w-3 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
                     <div>
-                      {car.mainImage && car.mainImage.imageurl ? <Image
-                        src={car.mainImage.imageurl}
-                        alt={car.mainImage.imageurl}
-                        fill={true}
-                        className="object-cover object-center"
-                        sizes="280w"
-                      /> : <></>}
+                      {car.mainImage && car.mainImage.imageurl ? (
+                        <Image
+                          src={car.mainImage.imageurl}
+                          alt={car.mainImage.imageurl}
+                          fill={true}
+                          className="object-cover object-center"
+                          sizes="280w"
+                        />
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </div>
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <Link href={`/car/${car.brands[0].trim().toLowerCase()}/${car.slug.current.trim().toLowerCase()}`} prefetch={false}>
+                        <Link
+                          href={`/car/${car.brands[0].trim().toLowerCase()}/${car.slug.current.trim().toLowerCase()}`}
+                          prefetch={false}
+                        >
                           <span
                             aria-hidden="true"
                             className="absolute inset-0"
@@ -147,9 +154,7 @@ export default function Index({ brands, cars }) {
                           {car.title}
                         </Link>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-
-                      </p>
+                      <p className="mt-1 text-sm text-gray-500"></p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
                       {car.price}
@@ -183,7 +188,7 @@ export async function getServerSideProps() {
   return {
     props: {
       brands,
-      cars
+      cars,
     },
   };
 }
