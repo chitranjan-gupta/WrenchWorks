@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { posterSmall, logo } from "@/img";
 import { client, urlFor } from "@/lib/sanity";
 import Header from "@/component/header";
+import { Table } from "@/component/table";
 import { navigation } from "@/lib/nav";
 
 const ptComponents = {
