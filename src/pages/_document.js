@@ -11,7 +11,7 @@ export default function Document() {
             src={`https://www.googletagmanager.com/ns.html?id=${gtm.GTM_TRACKING_ID}`}
             height="0"
             width="0"
-            style="display:none;visibility:hidden"
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
         <Main />
