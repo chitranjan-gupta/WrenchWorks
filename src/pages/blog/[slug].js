@@ -83,7 +83,7 @@ const Post = ({ post, posts }) => {
         <meta name="og:description" content={description} />
         <meta
           name="og:image"
-          content={post.mainImage ? urlFor(post.mainImage).url() : posterSmall}
+          content={post.mainImage ? urlFor(post.mainImage).url() : posterSmall.src}
         />
         <meta
           name="og:url"

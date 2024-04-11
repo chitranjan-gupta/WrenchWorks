@@ -153,6 +153,13 @@ export default function Main({ posts, cars }) {
       url: "https://github.com/Anurag7645",
       imageUrl: "https://avatars.githubusercontent.com/u/114188019?v=4",
     },
+    {
+      id: 4,
+      name: "Utkarsh Kumar",
+      role: "Co-Founder / CMO",
+      url: "https://github.com/utkarshsingh-rathore",
+      imageUrl: "https://avatars.githubusercontent.com/u/118733544?v=4",
+    },
   ];
   return (
     <>
@@ -629,7 +636,7 @@ export default function Main({ posts, cars }) {
       <footer className="bg-white rounded-lg shadow m-4">
         <div className="w-full mx-auto p-4 md:py-8">
           <div className="w-full flex flex-col justify-between items-start md:flex-row">
-            <div className="md:w-1/4">
+            <div className="mb-10 md:mb-0 md:w-1/4">
               <div className="h-16 w-30 mb-10 md:mb-0">
                 <Link
                   href="https://wrenchworks.tech"
